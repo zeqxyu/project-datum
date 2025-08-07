@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -15,7 +16,8 @@ class Class(models.Model):
 
 
 class Student(models.Model):
-	username = models.CharField(max_length=50, unique=True) # Janez Novak -> janez_novak_1
+	# рефка на модель User
+	user_ref = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student_profile', null=True) # Janez Novak -> janez_novak_1
 	class_ref = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='students') # Из какого класса
 	status = models.BooleanField(default=True) # ДЦП, шпортник, уметник, *президент....
 	money = models.IntegerField(default=0) # счет
