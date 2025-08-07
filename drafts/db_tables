@@ -1,0 +1,142 @@
+Student
+
+[pk] id
+username: "janez_novak_1"
+[fk] class: id
+status: T/F
+money
+justice_coefficient
+is_active: T/F
+
+Class 
+
+[pk] id
+code: "1a24"
+name: "1.A"
+[fk] president: id
+is_active: T/F
+
+Datum
+
+[pk] id
+code: "1a24_matust_01"
+[fk] assesment: id
+date: "2026-02-03"
+[fk] student: id
+price: 150
+rating: 7
+stage: "announced" / "rating" / "sale" / "distributed" // можно заменить на 0123
+label: ""
+
+Assesment
+
+[pk] id
+[fk] class: id 
+code: "1a24_matust1"
+stage: "announced" / "rating" / "sale" / "distributed" // или 0123
+name: "Prvo ustno iz mat"
+[fk] subject: id
+type: "ust" / "pis"
+
+Schedule
+
+[pk] id
+[fk] class: id
+valid_from: "2025-01-01"
+comment: ""
+
+ScheduleSlot
+
+[pk] id
+[fk] schedule: id
+[fk] subject: id
+day: 1/2/3/4/5/6/7
+hour: 0/1/2/3/4/5/6/7/8/9
+
+Subject
+
+[pk] id
+code: "mat"
+name: "Matematika"
+
+// LOGS
+
+TransactionLog
+
+[pk] id
+time: "2025-02-03T22:46:34" //или как правильно указывать
+[fk:student] from_student: id / null //если нулл то выдает система из неоткуда
+[fk:student] to_student: id / null //если нулл то платеж вникуда
+[fk] datum: id
+value: 150
+comment: ""
+
+PenaltyLog
+
+[pk] id
+time: "2025-02-03T22:46:34"
+[fk] student: id
+type: "penalty" / "cancellation"
+value: -100 // при канцеляции +100
+comment: ""
+
+JusticeCoefficientLog
+
+[pk] id
+time: "2025-02-03T22:46:34"
+[fk] student: id
+[fk] datum: id / null
+from_jc: 1.36
+to_jc: 0.97
+way: "random" / "rated" // другие надо бы еще продумать
+comment: ""
+
+DatumLog
+
+[pk] id
+time: "2025-02-03T22:46:34"
+[fk:student] from_student: id / null
+[fk:student] to_student: id / null
+[fk] datum: id
+value: 150 // если что-то с деньгами
+changed_date: "2026-05-04" // если изменили день датума
+comment: ""
+stage: "announced" / "rating" / "sale" / "distributed" // 0123
+update: "sold" / "rated" / "swapped" / "changed"
+
+DatumDiscount
+
+[pk] id
+[fk] student: id
+[fk] datum: id
+discount: 0.2 // 20%
+reason: "liked" / "disliked" / "justice"
+
+AssesmentLog
+
+[pk] id
+time: "2025-02-03T22:45:34"
+[fk] assesment: id
+stage: //
+update: "newStage" / "datesChanged" //...
+comment: ""
+
+RatingLog
+
+[pk] id
+[fk] student: id
+[fk] datum: id
+time: ""//
+value: -1/1
+
+SwapLog
+
+[pk] id
+type: "request" / "response" / "confirmation"
+time: //
+[fk:student] from: id
+[fk:student] to: id
+[fk] datumA: id
+[fk] datumB: id
+value: 150
+comment: ""
