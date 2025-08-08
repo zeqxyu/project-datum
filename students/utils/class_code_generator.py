@@ -1,3 +1,5 @@
+# Генерирует 1.A в 1а24 (год первого семестра)
+
 from datetime import datetime
 
 def generate_class_code(class_name: str, date: datetime = None) -> str:

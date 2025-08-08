@@ -1,3 +1,5 @@
+# Генерирует временный пароль
+
 import random
 import string
 

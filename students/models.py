@@ -25,5 +25,5 @@ class Student(models.Model):
 	is_active = models.BooleanField(default=True) # для удаления
 
 	def __str__(self):
-		return self.username
+		return self.user_ref.username
 
