@@ -6,11 +6,13 @@ from django.contrib.auth import get_user_model
 from students.models import Class, Student  # Импортируй из своего приложения
 
 # Мои утилиты
-from students.utils.cmdout import success, warning, error
 from students.utils.username_generator import generate_username, simplify_name
-from students.utils.class_name_validator import validate_class_name
 from students.utils.password_generator import generate_password
 from students.utils.class_code_generator import generate_class_code
+
+from students.utils.validators.class_name_validator import validate_class_name
+
+from utils.cmdout import success, warning, error
 
 from students.utils.constants import start_money, start_justice_coefficient
 
@@ -31,10 +33,11 @@ class Command(BaseCommand):
 			success("Президент класса:\n")
 			print(f"Name: {class_ref.president.user_ref.first_name} {class_ref.president.user_ref.last_name}")
 			warning(f"Usrn: {class_ref.president.user_ref.username}")
+			print()
 		else:
 			error("В классе нет президента! Назначьте его.\n")
 
-		success("Список всех студентов: \n")
+		success("Список всех студентов:")
 
 		if students_list != []:
 			for student in students_list:

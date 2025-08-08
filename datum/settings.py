@@ -40,8 +40,8 @@ INSTALLED_APPS = [
 
     # мои
 	'students',
-	'schedule',
-	'assesments',
+	'schedules',
+	'assessments',
 	'logs',
 	'api',
 ]

@@ -3,24 +3,25 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 
-from students.models import Class, Student  # Импортируй из своего приложения
+from students.models import Class, Student
 
 # Мои утилиты
 
-from students.utils.cmdout import success, warning, error
 
-from students.utils.username_generator import generate_username, simplify_name
-from students.utils.password_generator import generate_password
-from students.utils.class_code_validator import validate_class_code
 from students.utils.student_creator import create_student
 
 from students.utils.constants import start_money, start_justice_coefficient
 
+from students.utils.validators.class_code_validator import validate_class_code
+
+from utils.cmdout import success, warning, error
+
+# Остальные
 
 import re
 
 data = {
-	"class_code": "1b24",
+	"class_code": "1a24",
 	"new_students": [
 		("Marija", "Ščuka", False),
 		("Taj", "Miandrušič", True),
@@ -71,9 +72,9 @@ class Command(BaseCommand):
 				status=status
 			)
 
-			success(f"(i) Name: {created_student[0]} {created_student[1]}")
-			warning(self.style.WARNING(f"(i) Usrn: {created_student[2]}")
-			warning(self.style.WARNING(f"(i) Pswd: {created_student[3]}")
+			# success(f"(i) Name: {created_student[0]} {created_student[1]}")
+			# warning(f"(i) Usrn: {created_student[2]}")
+			# warning(f"(i) Pswd: {created_student[3]}")
 			print()
 			
 

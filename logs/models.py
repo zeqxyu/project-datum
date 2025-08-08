@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 
 from students.models import Student, Class
-from assesments.models import Datum, Assesment, Swap
+from assessments.models import Datum, Assessment, Swap
 
 # Create your models here.
 
@@ -58,7 +58,7 @@ class DatumLog(models.Model):
 
 	 # Связанные операции
 	transaction = models.ForeignKey('logs.TransactionLog', null=True, blank=True, on_delete=models.SET_NULL, related_name='datum_logs')
-	swap = models.ForeignKey('assesments.Swap', null=True, blank=True, on_delete=models.SET_NULL, related_name='datum_logs')
+	swap = models.ForeignKey('assessments.Swap', null=True, blank=True, on_delete=models.SET_NULL, related_name='datum_logs')
 	rating = models.ForeignKey('logs.RatingLog', null=True, blank=True, on_delete=models.SET_NULL, related_name='datum_logs')
 
 
@@ -95,15 +95,15 @@ class PenaltyLog(models.Model):
 		return f"Penalty: {self.student} - {self.amount} ({self.reason})"
 
 
-class AssesmentLog(models.Model):
-    assesment = models.ForeignKey(Assesment, on_delete=models.CASCADE)
+class AssessmentLog(models.Model):
+    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
     stage_before = models.IntegerField() # стадия по 0-1-2-3 см. assesments.models
     stage_after = models.IntegerField() # -//-
     timestamp = models.DateTimeField(default=timezone.now)
     comment = models.TextField(blank=True) # кастомное поле
 
     def __str__(self):
-        return f"Assesment {self.assesment} stage {self.stage_before}->{self.stage_after}"
+        return f"Assessment {self.assesment} stage {self.stage_before}->{self.stage_after}"
 
 class SwapLog(models.Model):
     swap = models.ForeignKey(Swap, on_delete=models.CASCADE, related_name='logs')

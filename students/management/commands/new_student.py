@@ -7,18 +7,19 @@ from django.contrib.auth import get_user_model
 
 from students.models import Class, Student
 
+import re
+
 # Мои утилиты
 
-from students.utils.cmdout import success, warning, error
+from utils.cmdout import success, warning, error
 
 from students.utils.username_generator import generate_username, simplify_name
 from students.utils.password_generator import generate_password
-from students.utils.class_code_validator import validate_class_code
+from students.utils.validators.class_code_validator import validate_class_code
 from students.utils.student_creator import create_student
 
 from students.utils.constants import start_money, start_justice_coefficient
 
-import re
 
 
 
