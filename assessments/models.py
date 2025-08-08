@@ -27,16 +27,16 @@ class Assessment(models.Model):
 	label = models.CharField(max_length=100, blank=True) # примечания
 
 	def __str__(self):
-		return self.code
+		return self.code 
 
 
 class Datum(models.Model):
 	code = models.CharField(max_length=50, unique=True) # пример 1a24_matust1_01
-	assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, related_name='datums') # ссылка
+	assessment_ref = models.ForeignKey(Assessment, on_delete=models.CASCADE, related_name='datums') # ссылка
 	date = models.DateField() # день, дата
 	student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True, blank=True)
-	price = models.IntegerField(default=0) # актуальная цена
-	rating = models.IntegerField(default=0) # рейтинг при оценивании
+	price = models.IntegerField(default=0, null=True) # актуальная цена
+	rating = models.IntegerField(default=0, null=True) # рейтинг при оценивании
 	stage = models.IntegerField(default=0, choices=[
 		(0, "announced"),
 		(1, "rating"),

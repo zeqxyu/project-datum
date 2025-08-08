@@ -1,0 +1,325 @@
+{
+	"code": "1a24_matust1",
+	"class_ref": "1a24",
+	"name": "Prvo ustno ocenjevanje iz matematike",
+	"subject": "mat",
+	"type": "ust",
+	"stage": 0,
+	"label": "Jopa pidor xyu govno",
+	
+	"datums": [
+		
+	]
+}
+
+{
+	"code": "1a24_matust1",
+	"class_ref": "1a24",
+	"name": "Prvo ustno ocenjevanje iz matematike",
+	"subject": "mat",
+	"type": "ust",
+	"stage": 0,
+	"label": "Jopa pidor xyu govno",
+	"datums": [
+	  {
+		"code": "1a24_matust1_01",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-11-15",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 1 for 2024-11-15"
+	  },
+	  {
+		"code": "1a24_matust1_02",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-11-15",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 2 for 2024-11-15"
+	  },
+	  {
+		"code": "1a24_matust1_03",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-11-15",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 3 for 2024-11-15"
+	  },
+	  {
+		"code": "1a24_matust1_04",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-11-22",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 4 for 2024-11-22"
+	  },
+	  {
+		"code": "1a24_matust1_05",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-11-22",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 5 for 2024-11-22"
+	  },
+	  {
+		"code": "1a24_matust1_06",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-11-22",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 6 for 2024-11-22"
+	  },
+	  {
+		"code": "1a24_matust1_07",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-11-29",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 7 for 2024-11-29"
+	  },
+	  {
+		"code": "1a24_matust1_08",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-11-29",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 8 for 2024-11-29"
+	  },
+	  {
+		"code": "1a24_matust1_09",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-11-29",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 9 for 2024-11-29"
+	  },
+	  {
+		"code": "1a24_matust1_10",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-06",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 10 for 2024-12-06"
+	  },
+	  {
+		"code": "1a24_matust1_11",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-06",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 11 for 2024-12-06"
+	  },
+	  {
+		"code": "1a24_matust1_12",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-06",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 12 for 2024-12-06"
+	  },
+	  {
+		"code": "1a24_matust1_13",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-13",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 13 for 2024-12-13"
+	  },
+	  {
+		"code": "1a24_matust1_14",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-13",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 14 for 2024-12-13"
+	  },
+	  {
+		"code": "1a24_matust1_15",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-13",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 15 for 2024-12-13"
+	  },
+	  {
+		"code": "1a24_matust1_16",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-20",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 16 for 2024-12-20"
+	  },
+	  {
+		"code": "1a24_matust1_17",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-20",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 17 for 2024-12-20"
+	  },
+	  {
+		"code": "1a24_matust1_18",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-20",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 18 for 2024-12-20"
+	  },
+	  {
+		"code": "1a24_matust1_19",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-27",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 19 for 2024-12-27"
+	  },
+	  {
+		"code": "1a24_matust1_20",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-27",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 20 for 2024-12-27"
+	  },
+	  {
+		"code": "1a24_matust1_21",
+		"assessment_ref": "1a24_matust1",
+		"date": "2024-12-27",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 21 for 2024-12-27"
+	  },
+	  {
+		"code": "1a24_matust1_22",
+		"assessment_ref": "1a24_matust1",
+		"date": "2025-01-03",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 22 for 2025-01-03"
+	  },
+	  {
+		"code": "1a24_matust1_23",
+		"assessment_ref": "1a24_matust1",
+		"date": "2025-01-03",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 23 for 2025-01-03"
+	  },
+	  {
+		"code": "1a24_matust1_24",
+		"assessment_ref": "1a24_matust1",
+		"date": "2025-01-03",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 24 for 2025-01-03"
+	  },
+	  {
+		"code": "1a24_matust1_25",
+		"assessment_ref": "1a24_matust1",
+		"date": "2025-01-10",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 25 for 2025-01-10"
+	  },
+	  {
+		"code": "1a24_matust1_26",
+		"assessment_ref": "1a24_matust1",
+		"date": "2025-01-10",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 26 for 2025-01-10"
+	  },
+	  {
+		"code": "1a24_matust1_27",
+		"assessment_ref": "1a24_matust1",
+		"date": "2025-01-10",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 27 for 2025-01-10"
+	  },
+	  {
+		"code": "1a24_matust1_28",
+		"assessment_ref": "1a24_matust1",
+		"date": "2025-01-17",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 28 for 2025-01-17"
+	  },
+	  {
+		"code": "1a24_matust1_29",
+		"assessment_ref": "1a24_matust1",
+		"date": "2025-01-17",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 29 for 2025-01-17"
+	  },
+	  {
+		"code": "1a24_matust1_30",
+		"assessment_ref": "1a24_matust1",
+		"date": "2025-01-17",
+		"student": null,
+		"price": null,
+		"rating": null,
+		"stage": 0,
+		"label": "Datum 30 for 2025-01-17"
+	  }
+	]
+  }
