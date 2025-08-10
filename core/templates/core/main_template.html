@@ -56,6 +56,7 @@
 				width: 10px;
 				height: 10px;
 				border-radius: 50%;
+				display: none;
 			">
 			</span>
 		</button>
@@ -79,13 +80,13 @@
 					<i class="bi bi-person-circle me-3"></i>
 					<span class="flex-grow-1">Moj račun</span>
 				</button>
-				<button class="list-group-item list-group-item-action d-flex align-items-center text-warning px-4 py-4">
+				<button class="list-group-item list-group-item-action d-flex align-items-center text-warning px-4 py-4" id="user_money_btn">
 					<i class="bi bi-coin me-3"></i>
 					<span class="flex-grow-1" id="user_money">
 						
 					</span>
 				</button>
-				<button class="list-group-item list-group-item-action d-flex align-items-center text-warning px-4 py-4">
+				<button class="list-group-item list-group-item-action d-flex align-items-center text-warning px-4 py-4" id="user_jc_btn">
 					<i class="bi bi-braces-asterisk me-3"></i>
 					<span class="flex-grow-1" id="user_jc">
 						
@@ -132,18 +133,6 @@
 		<div class="offcanvas-body p-0">
 			<div class="list-group list-group-flush" id="notifications"> 
 
-				<!-- Assessment -->
-				<button	class="list-group-item bg-dark text-white px-4 py-3 border-0" 
-						onclick="window.location.href='/razpored'">
-					<div class="small text-secondary mb-1">
-						<!-- time -->
-					</div>
-					<div class="d-flex align-items-center">
-						<i class="bi bi-info-circle me-3 fs-5"></i> <!-- icon -->
-						<div class="flex-grow-1"><!-- text --></div>
-					</div>
-				</button>
-
 			
 			</div>
 		</div>
@@ -162,52 +151,58 @@
 				"lastname": "Novak",
 				"username": "jannov_1",
 		
-				"status": true,
+				"status": false,
 				
 				"money": "1350",
 				"justice_coefficient": "0.86"
 			},
 			"notifications": [
 				{
+					"code": "jannov1_assessment_001",
 					"type": "assessment",
 					"time": "2025-10-13T14:01:03",
 					"text": "Novo ocenjevanje iz MAT",
-					"unread": true,
+					"unread": false,
 					"link": ""
 				},
 				{
+					"code": "jannov1_datum_001",
 					"type": "datum",
 					"time": "2025-10-13T14:01:03",
 					"text": "Dobili datum iz \"1. ustno ocenjevanje iz matematike\". Datum: 13.11",
-					"unread": true,
+					"unread": false,
 					"link": ""
 				},
 				{
+					"code": "jannov1_money_001",
 					"type": "money",
 					"time": "2025-10-13T14:01:03",
 					"text": "Odšteto vam je 350$.",
-					"unread": true,
+					"unread": false,
 					"link": ""
 				},
 				{
+					"code": "jannov1_justice_coefficient_001",
 					"type": "justice_coefficient",
 					"time": "2025-10-13T14:01:03",
 					"text": "Spremenjen pravičnostni koeficient: 1.21 -> 0.86",
-					"unread": true,
+					"unread": false,
 					"link": ""
 				},
 				{
+					"code": "jannov1_system_message_001",
 					"type": "system_message",
 					"time": "2025-10-13T14:01:03",
 					"text": "Dobili ste odgovor na prijavo tehnične napake.",
-					"unread": true,
+					"unread": false,
 					"link": ""
 				},
 				{
+					"code": "jannov1_swap_001",
 					"type": "swap",
 					"time": "2025-10-13T14:01:03",
 					"text": "Aleks Benedetti želi zamenjati z vami datum za MAT.",
-					"unread": true,
+					"unread": false,
 					"link": ""
 				}
 			]
@@ -225,6 +220,14 @@
 		setText("username", menu_data.student_data.username);
 		setText("user_money", menu_data.student_data.money);
 		setText("user_jc", menu_data.student_data.justice_coefficient);
+
+		if (menu_data.student_data.status) { 
+			const moneyEl = document.getElementById("user_money_btn");
+			const jcEl = document.getElementById("user_jc_btn");
+		
+			moneyEl.style.setProperty("display", "none", "important");
+			jcEl.style.setProperty("display", "none", "important");
+		}
 
 		// Нотификации
 
@@ -319,6 +322,28 @@
 	
 		// Вызовем функцию с menu_data из твоего скрипта
 		renderNotifications(menu_data);
+
+		// Показываем красную точку, если хотя бы одно уведомление с unread=true
+		const notifBadge = document.getElementById("notif-badge");
+		const hasUnread = menu_data.notifications.some(n => n.unread === true);
+		if (notifBadge) {
+			notifBadge.style.display = hasUnread ? "block" : "none";
+		}
+
+		// изменение unread в нотификациях при открытии шторки уведомлений
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const notifIcon = document.getElementById("notif-icon");
+			if (!notifIcon) return;
+		  
+			notifIcon.addEventListener("click", () => {
+			  const changedNotifications = menu_data.notifications
+				.filter(n => n.unread)
+				.map(n => ({ code: n.code, unread: false }));
+		  
+			  console.log(JSON.stringify(changedNotifications, null, 2));
+			});
+		  });
 
 	</script>
 
