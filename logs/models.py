@@ -138,3 +138,20 @@ class ClassLog(models.Model):
 
 	def __str__(self):
 		return f"ClassLog [{self.time}] - {self.class_ref.name} - {self.update_type}"
+
+class Notification(models.Model):
+	TYPE_CHOICES = [
+        ('assessment', 'Оценки / задания'),
+        ('money', 'Финансы'),
+        ('justice_coefficient', 'Коэффициент справедливости'),
+        ('system_message', 'Системные сообщения'),
+        ('swap', 'Обмен / замены'),
+        ('penalty', 'Штрафы'),
+        ('datum', 'Датумы'),
+    ]
+
+	student = models.ForeignKey(Student, on_delete=models.CASCADE)
+	type = models.CharField(max_length=20, choices=TYPE_CHOICES),
+	timestamp = models.DateTimeField(auto_now_add=True),
+	text = models.CharField(max_length=100, null=True, blank=True),
+	link = models.CharField(max_length=100, null=True, blank=True)

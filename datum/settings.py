@@ -39,11 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # мои
+    'core',
 	'students',
 	'schedules',
 	'assessments',
 	'logs',
 	'api',
+
+    # доп фреймворки
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

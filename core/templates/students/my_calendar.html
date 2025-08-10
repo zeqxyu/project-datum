@@ -1,0 +1,129 @@
+{% extends "core/main_template.html" %}
+
+{% block head %}
+    <title>
+        Moj koledar
+    </title>
+{% endblock head %}
+
+{% block content %}
+
+<div class="container mt-4">
+	<!-- Шапка с месяцем -->
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<button class="btn btn-outline-light" onclick="prevMonth()">
+			<i class="bi bi-chevron-left"></i>
+		</button>
+		<h4 id="calendar-month" class="mb-0"></h4>
+		<button class="btn btn-outline-light" onclick="nextMonth()">
+			<i class="bi bi-chevron-right"></i>
+		</button>
+	</div>
+
+	<!-- Календарная сетка (5 колонок: Пн-Пт) -->
+	<div class="row row-cols-5 g-2" id="calendarGrid">
+		<!-- Ячейки создаст скрипт -->
+	</div>
+</div>
+
+<script>
+	const MONTH_NAMES = [
+		"Januar", "Februar", "Marec", "April", "Maj",
+		"Junij", "Julij", "Avgust", "September", "Oktober", "November", "December"
+	];
+	const WEEKDAY_NAMES = ['PO', 'TO', 'SR', 'ČE', 'PE'];
+
+	const calendarGrid = document.getElementById('calendarGrid');
+	const calendarMonth = document.getElementById('calendar-month');
+
+	let currentYear, currentMonth;
+
+	function createHeader() {
+		// Выводим дни недели (Пн-Пт) над сеткой
+		const headerRow = document.createElement('div');
+		headerRow.className = 'row row-cols-5 g-2 mb-2 text-center fw-semibold text-light';
+		for (const day of WEEKDAY_NAMES) {
+			const col = document.createElement('div');
+			col.textContent = day;
+			headerRow.appendChild(col);
+		}
+		calendarGrid.before(headerRow);
+	}
+
+	function renderCalendar(year, month) {
+		currentYear = year;
+		currentMonth = month;
+		calendarMonth.textContent = `${MONTH_NAMES[month]} ${year}`;
+	
+		calendarGrid.innerHTML = ''; // очистить
+	
+		const daysInMonth = new Date(year, month + 1, 0).getDate();
+	
+		// Начинаем с понедельника недели, в которую входит 1-е число месяца
+		const firstDate = new Date(year, month, 1);
+		const firstDayJS = firstDate.getDay(); // 0-ВС, 1-Пн ...
+		// Смещаем так, чтобы получить понедельник той недели
+		const startDate = new Date(firstDate);
+		startDate.setDate(1 - ((firstDayJS + 6) % 7)); // сдвиг к понедельнику
+	
+		let cellsAdded = 0;
+		let currentDate = new Date(startDate);
+	
+		while (cellsAdded < 30) {
+			const dayOfWeek = currentDate.getDay();
+	
+			// Пропускаем субботу (6) и воскресенье (0)
+			if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+				const col = document.createElement('div');
+				col.className = 'col text-center py-3 rounded cursor-pointer';
+	
+				// Тусклый цвет, если не текущий месяц
+				if (currentDate.getMonth() !== month) {
+					col.classList.add('text-secondary');
+				} else {
+					col.classList.add('text-white');
+				}
+	
+				col.textContent = currentDate.getDate();
+	
+				col.onclick = () => alert(
+					`Datum: ${currentDate.getDate()}. ${MONTH_NAMES[currentDate.getMonth()]} ${currentDate.getFullYear()}`
+				);
+	
+				calendarGrid.appendChild(col);
+	
+				cellsAdded++;
+			}
+	
+			// Идём к следующему дню
+			currentDate.setDate(currentDate.getDate() + 1);
+		}
+	}
+
+	function prevMonth() {
+		let newMonth = currentMonth - 1;
+		let newYear = currentYear;
+		if (newMonth < 0) {
+			newMonth = 11;
+			newYear--;
+		}
+		renderCalendar(newYear, newMonth);
+	}
+
+	function nextMonth() {
+		let newMonth = currentMonth + 1;
+		let newYear = currentYear;
+		if (newMonth > 11) {
+			newMonth = 0;
+			newYear++;
+		}
+		renderCalendar(newYear, newMonth);
+	}
+
+	// init
+	createHeader();
+	const now = new Date();
+	renderCalendar(now.getFullYear(), now.getMonth());
+</script>
+
+{% endblock content %}
