@@ -21,3 +21,9 @@ from schedules.utils.schedule_to_dict import schedule_to_dict  # наприме�
 
 def my_calendar(request):
     return render(request, 'students/my_calendar.html')
+
+def my_account(request):
+    return render(request, 'students/my_account.html')
+
+def my_class(request):
+    return render(request, 'students/my_class.html')

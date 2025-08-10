@@ -4,7 +4,8 @@ export const menu_data = {
         "lastname": "Novak",
         "username": "jannov_1",
 
-        "status": false,
+        "status": true,
+        "is_president": true,
         
         "money": "1350",
         "justice_coefficient": "0.86"
