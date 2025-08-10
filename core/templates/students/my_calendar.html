@@ -8,122 +8,198 @@
 
 {% block content %}
 
-<div class="container mt-4">
-	<!-- Шапка с месяцем -->
-	<div class="d-flex justify-content-between align-items-center mb-3">
-		<button class="btn btn-outline-light" onclick="prevMonth()">
-			<i class="bi bi-chevron-left"></i>
-		</button>
-		<h4 id="calendar-month" class="mb-0"></h4>
-		<button class="btn btn-outline-light" onclick="nextMonth()">
-			<i class="bi bi-chevron-right"></i>
-		</button>
-	</div>
+<style>
+	body {
+		background-color: #212529;
+		color: white;
+	}
+	.calendar {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: repeat(6, 100px);
+		border: 1px solid #444;
+	}
+	.calendar .day {
+		border: 1px solid #444;
+		position: relative;
+		padding: 4px 4px 24px 4px;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+	.calendar .date-number {
+		position: absolute;
+		bottom: 4px;
+		right: 6px;
+		font-size: 0.9rem;
+		color: #fff;
+	}
+	.calendar .other-month .date-number {
+		color: #adb5bd;
+	}
+	.weekdays {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		text-align: center;
+		font-weight: bold;
+		border: 1px solid #444;
+	}
+	.weekdays div {
+		border: 1px solid #444;
+		padding: 4px 0;
+		user-select: none;
+	}
+	.event-badge {
+		display: inline-block;
+		font-size: 0.75rem;
+		padding: 1px 6px;
+		margin: 2px 2px 2px 0;
+		border-radius: 4px;
+		color: white;
+		white-space: nowrap;
+		flex-shrink: 0;
+	}
+	.event-UST {
+		background-color: #0d6efd; /* синий */
+	}
+	.event-PIS {
+		background-color: #dc3545; /* красный */
+	}
+</style>
 
-	<!-- Календарная сетка (5 колонок: Пн-Пт) -->
-	<div class="row row-cols-5 g-2" id="calendarGrid">
-		<!-- Ячейки создаст скрипт -->
-	</div>
+<div class="d-flex justify-content-between align-items-center mb-2">
+	<button class="btn" id="prevMonth">&lt;</button>
+	<h4 id="monthYear" class="m-0"></h4>
+	<button class="btn" id="nextMonth">&gt;</button>
 </div>
 
+<div class="weekdays">
+	<div>Po</div>
+	<div>To</div>
+	<div>Sr</div>
+	<div>Če</div>
+	<div>Pe</div>
+</div>
+
+<div class="calendar" id="calendar"></div>
+
 <script>
-	const MONTH_NAMES = [
-		"Januar", "Februar", "Marec", "April", "Maj",
-		"Junij", "Julij", "Avgust", "September", "Oktober", "November", "December"
+	student_datums_data = [
+		{
+			"code": "1a24_matust1_14",
+			"date": "2024-11-21",
+			"subject_cap": "MAT",
+			"type_cap": "UST"
+		},
+		{
+			"code": "1a24_zgoust1_09",
+			"date": "2024-11-21",
+			"subject_cap": "ZGO",
+			"type_cap": "UST"
+		},
+		{
+			"code": "1a24_angust1_03",
+			"date": "2024-09-18",
+			"subject_cap": "ANG",
+			"type_cap": "UST"
+		},
+		{
+			"code": "1a24_bioust1_07",
+			"date": "2024-12-17",
+			"subject_cap": "BIO",
+			"type_cap": "UST"
+		},
+		{
+			"code": "1a24_glaust1_04",
+			"date": "2024-11-14",
+			"subject_cap": "GLA",
+			"type_cap": "UST"
+		},
+		{
+			"code": "1a24_glapis1_04",
+			"date": "2024-11-28",
+			"subject_cap": "GLA",
+			"type_cap": "PIS"
+		},
+		{
+			"code": "1a24_matpis1_04",
+			"date": "2024-11-28",
+			"subject_cap": "MAT",
+			"type_cap": "PIS"
+		},
+		{
+			"code": "1a24_fizpis1_04",
+			"date": "2024-11-04",
+			"subject_cap": "FIZ",
+			"type_cap": "PIS"
+		}
 	];
-	const WEEKDAY_NAMES = ['PO', 'TO', 'SR', 'ČE', 'PE'];
 
-	const calendarGrid = document.getElementById('calendarGrid');
-	const calendarMonth = document.getElementById('calendar-month');
+	const calendarEl = document.getElementById("calendar");
+	const monthYearEl = document.getElementById("monthYear");
+	const prevBtn = document.getElementById("prevMonth");
+	const nextBtn = document.getElementById("nextMonth");
 
-	let currentYear, currentMonth;
+	let currentDate = new Date();
 
-	function createHeader() {
-		// Выводим дни недели (Пн-Пт) над сеткой
-		const headerRow = document.createElement('div');
-		headerRow.className = 'row row-cols-5 g-2 mb-2 text-center fw-semibold text-light';
-		for (const day of WEEKDAY_NAMES) {
-			const col = document.createElement('div');
-			col.textContent = day;
-			headerRow.appendChild(col);
-		}
-		calendarGrid.before(headerRow);
-	}
+	function renderCalendar(date) {
+		calendarEl.innerHTML = "";
+		const year = date.getFullYear();
+		const month = date.getMonth();
 
-	function renderCalendar(year, month) {
-		currentYear = year;
-		currentMonth = month;
-		calendarMonth.textContent = `${MONTH_NAMES[month]} ${year}`;
-	
-		calendarGrid.innerHTML = ''; // очистить
-	
-		const daysInMonth = new Date(year, month + 1, 0).getDate();
-	
-		// Начинаем с понедельника недели, в которую входит 1-е число месяца
-		const firstDate = new Date(year, month, 1);
-		const firstDayJS = firstDate.getDay(); // 0-ВС, 1-Пн ...
-		// Смещаем так, чтобы получить понедельник той недели
-		const startDate = new Date(firstDate);
-		startDate.setDate(1 - ((firstDayJS + 6) % 7)); // сдвиг к понедельнику
-	
-		let cellsAdded = 0;
-		let currentDate = new Date(startDate);
-	
-		while (cellsAdded < 30) {
-			const dayOfWeek = currentDate.getDay();
-	
-			// Пропускаем субботу (6) и воскресенье (0)
-			if (dayOfWeek !== 0 && dayOfWeek !== 6) {
-				const col = document.createElement('div');
-				col.className = 'col text-center py-3 rounded cursor-pointer';
-	
-				// Тусклый цвет, если не текущий месяц
-				if (currentDate.getMonth() !== month) {
-					col.classList.add('text-secondary');
-				} else {
-					col.classList.add('text-white');
+		monthYearEl.textContent = date.toLocaleString("ru-RU", { month: "long", year: "numeric" });
+
+		const firstDayOfMonth = new Date(year, month, 1);
+		const lastDayOfMonth = new Date(year, month + 1, 0);
+
+		let startDay = firstDayOfMonth.getDay();
+		if (startDay === 0) startDay = 7; // воскресенье
+		let startDate = new Date(firstDayOfMonth);
+		startDate.setDate(firstDayOfMonth.getDate() - (startDay - 1)); // понедельник недели первого числа месяца
+
+		for (let week = 0; week < 6; week++) {
+			for (let day = 0; day < 5; day++) {
+				const dayDate = new Date(startDate);
+				dayDate.setDate(startDate.getDate() + week * 7 + day);
+
+				const dayEl = document.createElement("div");
+				dayEl.classList.add("day");
+				if (dayDate.getMonth() !== month) {
+					dayEl.classList.add("other-month");
 				}
-	
-				col.textContent = currentDate.getDate();
-	
-				col.onclick = () => alert(
-					`Datum: ${currentDate.getDate()}. ${MONTH_NAMES[currentDate.getMonth()]} ${currentDate.getFullYear()}`
-				);
-	
-				calendarGrid.appendChild(col);
-	
-				cellsAdded++;
+
+				// события на этот день
+				const dayEvents = student_datums_data.filter(ev => ev.date === dayDate.toISOString().split("T")[0]);
+				dayEvents.forEach(ev => {
+					const badge = document.createElement("div");
+					badge.classList.add("event-badge");
+					if (ev.type_cap === "UST") badge.classList.add("event-UST");
+					if (ev.type_cap === "PIS") badge.classList.add("event-PIS");
+					badge.textContent = ev.subject_cap;
+					dayEl.appendChild(badge);
+				});
+
+				const numberEl = document.createElement("div");
+				numberEl.classList.add("date-number");
+				numberEl.textContent = dayDate.getDate();
+
+				dayEl.appendChild(numberEl);
+				calendarEl.appendChild(dayEl);
 			}
-	
-			// Идём к следующему дню
-			currentDate.setDate(currentDate.getDate() + 1);
 		}
 	}
 
-	function prevMonth() {
-		let newMonth = currentMonth - 1;
-		let newYear = currentYear;
-		if (newMonth < 0) {
-			newMonth = 11;
-			newYear--;
-		}
-		renderCalendar(newYear, newMonth);
-	}
+	prevBtn.addEventListener("click", () => {
+		currentDate.setMonth(currentDate.getMonth() - 1);
+		renderCalendar(currentDate);
+	});
 
-	function nextMonth() {
-		let newMonth = currentMonth + 1;
-		let newYear = currentYear;
-		if (newMonth > 11) {
-			newMonth = 0;
-			newYear++;
-		}
-		renderCalendar(newYear, newMonth);
-	}
+	nextBtn.addEventListener("click", () => {
+		currentDate.setMonth(currentDate.getMonth() + 1);
+		renderCalendar(currentDate);
+	});
 
-	// init
-	createHeader();
-	const now = new Date();
-	renderCalendar(now.getFullYear(), now.getMonth());
+	renderCalendar(currentDate);
 </script>
 
 {% endblock content %}
