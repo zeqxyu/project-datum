@@ -1,4 +1,5 @@
 import { class_data } from './temp_data.js'
+import {menu_data} from '/static/js/core/main_template/temp_data.js'
 
 // Вставка данных в DOM
 document.addEventListener("DOMContentLoaded", () => {
@@ -27,3 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
         tbody.appendChild(tr);
     });
 });
+
+function toggleEditClassButton(menu_data) {
+	const btn = document.getElementById('editClassBtn');
+	if (!btn) return; // кнопка не найдена
+
+	if (menu_data.student_data.is_president === true) {
+		btn.style.display = 'inline-block'; // или 'block' — как нужно
+	} else {
+		btn.style.display = 'none';
+	}
+}
+
+toggleEditClassButton(menu_data)

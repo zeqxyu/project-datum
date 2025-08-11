@@ -27,3 +27,9 @@ def my_account(request):
 
 def my_class(request):
     return render(request, 'students/my_class.html')
+
+
+# ASSESSMENTS
+
+def my_class(request):
+    return render(request, 'assessments/assessments.html')
