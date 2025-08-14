@@ -19,8 +19,6 @@ from schedules.utils.schedule_to_dict import schedule_to_dict  # наприме�
 
 # STUDENTS
 
-def my_calendar(request):
-    return render(request, 'students/my_calendar.html')
 
 def my_account(request):
     return render(request, 'students/my_account.html')
@@ -31,5 +29,11 @@ def my_class(request):
 
 # ASSESSMENTS
 
-def my_class(request):
+def my_calendar(request):
+    return render(request, 'assessments/calendar.html')
+
+def assessment_view(request):
+    return render(request, 'assessments/calendar.html')
+
+def assessments(request):
     return render(request, 'assessments/assessments.html')

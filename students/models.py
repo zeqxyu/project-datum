@@ -24,6 +24,9 @@ class Student(models.Model):
 	justice_coefficient = models.FloatField(default=1.0) # коэф. справедливости
 	is_active = models.BooleanField(default=True) # для удаления
 
+	def is_president(self):
+		return self == self.class_ref.president
+
 	def __str__(self):
 		return self.user_ref.username
 

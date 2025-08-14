@@ -8,7 +8,7 @@ export const student_datums_data = [
 	},
 	{
 		"code": "1a24_zgoust1_09",
-		"date": "2024-11-21",
+		"date": "2024-11-20",
 		"subject_cap": "ZGO",
 		"type_cap": "UST",
 		"label": "label"

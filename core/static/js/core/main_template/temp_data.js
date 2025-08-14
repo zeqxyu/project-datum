@@ -2,7 +2,7 @@ export const menu_data = {
     "student_data": {
         "firstname": "Janez",
         "lastname": "Novak",
-        "username": "jannov_1",
+        "username": "jannov1",
 
         "status": true,
         "is_president": true,
