@@ -110,9 +110,10 @@ export function showScheduleInOffcanvas(date) {
 						assessment_data.subject_cap,      // предмет
 						assessment_data.type_cap,         // тип (UST/PIS)
 						formatDateLocalISO(date),         // дата
-						assessment_data.label             // описание
+						// assessment_data.label             // описание
 					);
 				});
+
 			
 				tdSubject.appendChild(btn);
 			

@@ -1,4 +1,5 @@
 import { student_datums_data } from '/static/js/assessments/calendar/temp_data.js';
+import { menu_data } from '/static/js/core/main_template/temp_data.js'
 
 export function formatDateSlovenian(dateStr) {
 	const d = new Date(dateStr);
@@ -30,9 +31,7 @@ export function showMyDatumDetails(code) {
 	new bootstrap.Modal(document.getElementById('datumModal')).show();
 }
 
-import { menu_data } from '/static/js/core/main_template/temp_data.js';
-
-export function showAssessmentDatumDetails(assessmentDatums, subject, type, date, label) {
+export function showAssessmentDatumDetails(assessmentDatums, subject, type, date) {
 	const modalEl = document.getElementById('assessmentDatumModal');
 	const modal = new bootstrap.Modal(modalEl);
 
@@ -40,57 +39,53 @@ export function showAssessmentDatumDetails(assessmentDatums, subject, type, date
 	document.getElementById('assessmentDatumSubject').textContent = subject;
 	document.getElementById('assessmentDatumType').textContent = type;
 	document.getElementById('assessmentDatumDate').textContent = date;
-	document.getElementById('assessmentDatumLabel').textContent = label;
+	// document.getElementById('assessmentDatumLabel').textContent = label;
 
-	// tbody для списка датумов
-	const tableBodyEl = document.getElementById('assessmentDatumList');
-	tableBodyEl.innerHTML = ''; // очистка предыдущих строк
+	// Контейнер для мини-таблиц
+	const container = document.getElementById('assessmentDatumList');
+	container.innerHTML = ''; // очистка предыдущих
 
 	assessmentDatums.forEach((datum, index) => {
-		const tr = document.createElement('tr');
+		const table = document.createElement('table');
+		table.className = 'table table-dark table-striped table-bordered mb-3';
 
-		// Номер
-		const th = document.createElement('th');
-		th.scope = 'row';
-		th.textContent = index + 1;
-		tr.appendChild(th);
+		const tbody = document.createElement('tbody');
 
-		// Code
-		const tdCode = document.createElement('td');
-		tdCode.textContent = datum.code;
-		tr.appendChild(tdCode);
+		const addRow = (labelText, valueText, popoverUsername) => {
+			const tr = document.createElement('tr');
+			const th = document.createElement('th');
+			th.scope = 'row';
+			th.textContent = labelText;
+			const td = document.createElement('td');
+			td.textContent = valueText || '-';
 
-		// Student
-		const tdStudent = document.createElement('td');
-		tdStudent.textContent = datum.student_name || '-';
+			if (popoverUsername) {
+				const info = document.createElement('span');
+				info.dataset.bsToggle = 'popover';
+				info.dataset.bsContent = 'username: ${popoverUsername}';
+				info.textContent = ' ℹ️';
+				td.appendChild(info);
+			}
 
-		if (datum.student_username) {
-			const info = document.createElement('span');
-			info.dataset.bsToggle = 'popover';
-			info.dataset.bsContent = `username: ${datum.student_username}`;
-			info.textContent = ' ℹ️';
-			tdStudent.appendChild(info);
-		}
+			tr.appendChild(th);
+			tr.appendChild(td);
+			tbody.appendChild(tr);
+		};
 
-		tr.appendChild(tdStudent);
+		addRow('#', (index + 1).toString());
+		addRow('Code', datum.code);
+		addRow('Student', datum.student_name, datum.student_username);
+		addRow('Rating', datum.rating);
+		addRow('Price', datum.price);
+		addRow('Label', datum.label);
 
-		// Rating
-		const tdRating = document.createElement('td');
-		tdRating.textContent = datum.rating != null ? datum.rating : '-';
-		tr.appendChild(tdRating);
-
-		// Price
-		const tdPrice = document.createElement('td');
-		tdPrice.textContent = datum.price != null ? datum.price : '-';
-		tr.appendChild(tdPrice);
-
-		tableBodyEl.appendChild(tr);
+		table.appendChild(tbody);
+		container.appendChild(table);
 	});
 
-	// Поповеры
+	// Инициализация поповеров
 	const popoverTriggerList = [].slice.call(modalEl.querySelectorAll('[data-bs-toggle="popover"]'));
 	popoverTriggerList.map(popEl => new bootstrap.Popover(popEl));
 
-	// Открыть модалку
 	modal.show();
 }

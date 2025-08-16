@@ -85,72 +85,35 @@
 </div>
 
 <!-- Модальное окно ASSESSMENT DATUM -->
-<div class="modal fade" id="assessmentDatumModal" tabindex="-1" aria-labelledby="assessmentDatumModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-lg">
-		<div class="modal-content bg-dark text-white fs-5">
+<div class="modal fade" id="assessmentDatumModal" tabindex="-1">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content bg-dark text-light">
 			<div class="modal-header">
-				<h5 class="modal-title" id="assessmentDatumModalLabel">Podrobnosti ocenjevalnega datuma</h5>
-				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Zapri"></button>
+				<h5 class="modal-title" id="assessmentDatumSubject"></h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
 			</div>
 			<div class="modal-body">
-				<!-- Основная информация о дне -->
-				<table class="table table-dark table-striped table-borderless mb-3">
-					<tbody>
-					<tr>
-						<th scope="row" style="width: 30%;">Predmet</th>
-						<td><span id="assessmentDatumSubject">MAT</span></td>
-					</tr>
-					<tr>
-						<th scope="row">Tip</th>
-						<td><span id="assessmentDatumType">UST</span></td>
-					</tr>
-					<tr>
-						<th scope="row">Datum</th>
-						<td><span id="assessmentDatumDate">21.11.2024</span></td>
-					</tr>
-					<tr>
-						<th scope="row">Opis</th>
-						<td><span id="assessmentDatumLabel">Dodatne informacije o datumu...</span></td>
-					</tr>
-					</tbody>
-				</table>
-
-				<!-- Список всех датумов на этот день -->
-				<table class="table table-dark table-striped table-bordered mb-0">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Code</th>
-							<th>Student</th>
-							<th>Rating</th>
-							<th>Price</th>
-						</tr>
-					</thead>
-					<tbody id="assessmentDatumList">
-						<!-- Здесь JS будет добавлять строки по количеству датумов -->
-						<!-- Пример строки:
-						<tr>
-							<th scope="row">1</th>
-							<td>1a24_matust1</td>
-							<td>
-								Janez Novak
-								<span data-bs-toggle="popover" data-bs-content="username: jnovak">ℹ️</span>
-							</td>
-							<td>5</td>
-							<td>10€</td>
-						</tr>
-						-->
-					</tbody>
-				</table>
+				<p><strong>Vrsta:</strong> <span id="assessmentDatumType"></span></p>
+				<p><strong>Datum:</strong> <span id="assessmentDatumDate"></span></p>
+				<div id="assessmentDatumList">
+                    {% comment %} тут мяско {% endcomment %}
+                </div>
 			</div>
 			<div class="modal-footer">
-				<a href="" id="assessmentDatumHistory" class="btn btn-light">Zgodovina</a>
-				<a href="" id="assessmentDatumLink" class="btn btn-primary">Ocenjevanje</a>
-				<a href="" id="assessmentDatumSwap" class="btn btn-warning">Zamenjaj</a>
+				<button id="assessmentDatumRatePlus" class="btn btn-danger" target="_blank">
+                    <span class="bi bi-dash-circle"></span>
+                </button>
+				<button id="assessmentDatumRateMinus" class="btn btn-outline-secondary" target="_blank">
+                    cancel
+                </button>
+				<button id="assessmentDatumRateCancel" class="btn btn-success" target="_blank">
+                    <span class="bi bi-plus-circle"></span>
+                </button>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 
 <script type="module" src="/static/js/assessments/calendar/calendar.js">
