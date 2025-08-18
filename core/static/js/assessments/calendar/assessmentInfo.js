@@ -1,30 +1,6 @@
 import {menu_data} from '/static/js/core/main_template/temp_data.js';
 import {assessment_data, student_datums_data} from '/static/js/assessments/calendar/temp_data.js';
 
-// ======= Пример данных =======
-const mockData = [
-	{
-		id: 1,
-		title: "Ustno iz biologije",
-		subjectCode: "BIO",
-		type: "ustno ocenjevanje",
-		note: "Poglavje o genetiki",
-		stage: 2,
-		plus: 3,
-		minus: 1
-	},
-	{
-		id: 2,
-		title: "Pisno iz matematike",
-		subjectCode: "MAT",
-		type: "pisno ocenjevanje",
-		note: "Derivacije",
-		stage: 1,
-		plus: 1,
-		minus: 0
-	}
-];
-
 // ======= Прогресс бар логика =======
 function getStageClasses(stage) {
 	let iconClasses, lineClasses, statusClass, statusText;
@@ -95,13 +71,8 @@ export function renderAssessmentCard(assessment_data) {
 
 			<!-- Нижний блок -->
 			<div class="d-flex justify-content-between align-items-center">
-				<div>
-					<span class="badge bg-success me-2">
-						<span id="aviablePluses"></span> <span class="bi bi-plus-circle"></span>
-					</span>
-					<span class="badge bg-danger">
-						<span id="aviableMinuses"></span> <span class="bi bi-dash-circle"></span>
-					</span>
+				<div id="aviableRatings">
+					
 				</div>
 				<div id="assessmentBtnWrapper">
 					<a href="/assessments/print/${assessment_data.code}" class="btn btn-outline-secondary btn-sm me-2">
@@ -122,6 +93,23 @@ export function renderAssessmentCard(assessment_data) {
         editLink.className = "btn btn-outline-primary btn-sm ms-2";
         editLink.innerHTML = `<i class="bi bi-pencil-square"></i> Edit`;
         btnWrapper.appendChild(editLink);
+    }
+    
+    console.log(assessment_data.stage);
+    if (assessment_data.stage === 1) {
+        const aviableRatingsWrapper = card.querySelector('#aviableRatings');
+
+        const aviableRatingsContent = document.createElement("span");
+        aviableRatingsContent.innerHTML = `
+            <span class="badge bg-success me-2">
+                <span id="aviablePluses"></span> <span class="bi bi-plus-circle"></span>
+            </span>
+            <span class="badge bg-danger">
+                <span id="aviableMinuses"></span> <span class="bi bi-dash-circle"></span>
+            </span>
+        `;
+
+        aviableRatingsWrapper.appendChild(aviableRatingsContent);
     }
 }
 

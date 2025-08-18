@@ -24,8 +24,7 @@ function init() {
             currentDate = new Date(targetDatum.date); // подставляем месяц датума
         }
     }
-
-    renderAssessmentCard(assessment_data);
+    if (assessment_data.assessment_view === true) renderAssessmentCard(assessment_data);
 
     renderCalendar(currentDate, menu_data);
     attachDayClickHandlers(currentDate, showScheduleInOffcanvas);

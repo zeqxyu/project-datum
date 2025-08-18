@@ -95,8 +95,8 @@ export function showAssessmentDatumDetails(assessmentDatums, assessment_data, da
 		// стадия 0 - только статусники
 		if (!hasAnyDatum && datum.student == null && menu_data.student_data.status === true && assessment_data.stage === 0) {
 			const selectBtn = document.createElement('button');
-			selectBtn.className = 'btn btn-primary btn-sm';
-			selectBtn.textContent = 'Выбрать';
+			selectBtn.className = 'btn btn-secondary btn-sm';
+			selectBtn.textContent = 'Izberi';
 			// тут вешаешь обработчик:
 			selectBtn.addEventListener('click', () => {
 				console.log('Выбрать datum:', datum.code);
@@ -107,8 +107,8 @@ export function showAssessmentDatumDetails(assessmentDatums, assessment_data, da
 		// стадия 2 - свободные датумы
 		if (!hasAnyDatum && datum.student == null && assessment_data.stage === 2) {
 			const buyBtn = document.createElement('button');
-			buyBtn.className = 'btn btn-success btn-sm';
-			buyBtn.textContent = 'Купить';
+			buyBtn.className = 'btn btn-warning btn-sm';
+			buyBtn.textContent = `Buy for ${datum.price}`;
 			buyBtn.addEventListener('click', () => {
 				console.log('Купить datum:', datum.code);
 				// TODO: сюда действие покупки
@@ -116,13 +116,13 @@ export function showAssessmentDatumDetails(assessmentDatums, assessment_data, da
 			btnWrapper.appendChild(buyBtn);
 		}
 		// стадия 3 - своп
-		if (datum.student != null && datum.student != menu_data.student_data.username && assessment_data.stage === 3) {
+		if (hasAnyDatum && datum.student != null && datum.student != menu_data.student_data.username && assessment_data.stage === 3) {
 			const buyBtn = document.createElement('button');
-			buyBtn.className = 'btn btn-success btn-sm';
-			buyBtn.textContent = 'Купить';
+			buyBtn.className = 'btn btn-outline-light btn-sm';
+			buyBtn.textContent = 'Swap';
 			buyBtn.addEventListener('click', () => {
-				console.log('Купить datum:', datum.code);
-				// TODO: сюда действие покупки
+				console.log('Swap datum:', datum.code);
+				// TODO: сюда действие swapa
 			});
 			btnWrapper.appendChild(buyBtn);
 		}
@@ -139,6 +139,27 @@ export function showAssessmentDatumDetails(assessmentDatums, assessment_data, da
 			table.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.6)'; // занят — красный
 		}
 	});
+
+	if (!hasAnyDatum && assessment_data.stage === 1 && assessmentDatums.some(d => d.student == null)) {
+
+		const ratingButtons = document.getElementById("ratingButtons");
+		ratingButtons.innerHTML = ''; // очищаем предыдущие кнопки
+
+
+		const ratingButtonsContent = document.createElement("div");
+		ratingButtonsContent.innerHTML = `
+			<button id="assessmentDatumRatePlus" class="btn btn-danger" target="_blank">
+				<span class="bi bi-dash-circle"></span>
+			</button>
+			<button id="assessmentDatumRateMinus" class="btn btn-outline-secondary" target="_blank">
+				cancel
+			</button>
+			<button id="assessmentDatumRateCancel" class="btn btn-success" target="_blank">
+				<span class="bi bi-plus-circle"></span>
+			</button>
+		`;
+		ratingButtons.appendChild(ratingButtonsContent);
+	}
 
 	// Инициализация поповеров
 	const popoverTriggerList = [].slice.call(modalEl.querySelectorAll('[data-bs-toggle="popover"]'));
