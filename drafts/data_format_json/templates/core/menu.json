@@ -1,0 +1,101 @@
+{
+    "student_data": {
+        "firstname": "Janez",
+        "lastname": "Novak",
+        "username": "jannov_1",
+
+        "status": true,
+        
+        "money": "1350",
+        "justice_coefficient": "0.86"
+    },
+    "notifications": [
+        {
+            "type": "assessment",
+            "time": "2025-10-13T14:01:03",
+            "text": "Novo ocenjevanje iz MAT",
+            "unread": true,
+            "link": ""
+        },
+        {
+            "type": "datum",
+            "time": "2025-10-13T14:01:03",
+            "text": "Dobili datum iz \"1. ustno ocenjevanje iz matematike\". Datum: 13.11",
+            "unread": true,
+            "link": ""
+        },
+        {
+            "type": "money",
+            "time": "2025-10-13T14:01:03",
+            "text": "Odšteto vam je 350$.",
+            "unread": true,
+            "link": ""
+        },
+        {
+            "type": "justice_coefficient",
+            "time": "2025-10-13T14:01:03",
+            "text": "Spremenjen pravičnostni koeficient: 1.21 -> 0.86",
+            "unread": true,
+            "link": ""
+        },
+        {
+            "type": "system_message",
+            "time": "2025-10-13T14:01:03",
+            "text": "Dobili ste odgovor na prijavo tehnične napake.",
+            "unread": true,
+            "link": ""
+        },
+        {
+            "type": "swap",
+            "time": "2025-10-13T14:01:03",
+            "text": "Aleks Benedetti želi zamenjati z vami datum za MAT.",
+            "unread": true,
+            "link": ""
+        }
+    ]
+}
+
+{
+    "assessment": {
+        "bg_color": "bg-primary",
+        "text_color": "text-white",
+        "time_color": "text-secondary-emphasis",
+        "icon": "bi-calendar-week"
+    },
+    "datum": {
+        "bg_color": "bg-warning",
+        "text_color": "text-dark",
+        "time_color": "text-secondary",
+        "icon": "bi-calendar-date"
+    },
+    "money": {
+        "bg_color": "bg-dark",
+        "text_color": "text-white",
+        "time_color": "text-secondary",
+        "icon": "bi-coin"
+    },
+    "justice_coefficient": {
+        "bg_color": "bg-dark",
+        "text_color": "text-white",
+        "time_color": "text-secondary",
+        "icon": "bi-info-circle"
+    },
+    "swap": {
+        "bg_color": "bg-warning",
+        "text_color": "text-dark",
+        "time_color": "text-secondary",
+        "icon": "bi-shuffle"
+    },
+    "system_message": {
+        "bg_color": "bg-dark",
+        "text_color": "text-white",
+        "time_color": "text-secondary",
+        "icon": "bi-code-slash"
+    },
+    "penalty": {
+        "bg_color": "bg-danger",
+        "text_color": "text-white",
+        "time_color": "text-secondary-emphasis",
+        "icon": "bi-slash_square"
+    }
+}

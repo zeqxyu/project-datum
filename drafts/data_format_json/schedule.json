@@ -1,0 +1,57 @@
+{
+	"class_code": "1a24",
+	"valid_from": "01.09.2024",
+	"comment": "My comment jopa pidor.",
+	"schedule": [
+		null,
+		[
+			null,
+			"zgo",
+			"ang",
+			"svz",
+			"slj",
+			"fiz",
+			"inf",
+			"inf"
+		],
+		[
+			null,
+			"slj",
+			"slj",
+			"bio",
+			"ita",
+			"geo",
+			"fiz"
+		],
+		[
+			null,
+			"fiz",
+			"svz",
+			"svz",
+			"mat",
+			"zgo",
+			"ang",
+			"kem"
+		],
+		[
+			null,
+			"bio",
+			"ita",
+			"slj",
+			"ang",
+			"mat",
+			"mat",
+			"gla"
+		],
+		[
+			null,
+			"inf",
+			"inf",
+			"ita",
+			"fiz",
+			"mat",
+			"geo",
+			"lum"
+		]
+	]
+}

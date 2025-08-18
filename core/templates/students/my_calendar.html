@@ -1,0 +1,557 @@
+{% extends "core/main_template.html" %}
+
+{% block head %}
+    <title>
+        Moj koledar
+    </title>
+{% endblock head %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/css/students/my_calendar/my_calendar.css">
+
+<div class="d-flex justify-content-between align-items-center mb-2">
+	<button class="btn" id="prevMonth">&lt;</button>
+	<h4 id="monthYear" class="m-0"></h4>
+	<button class="btn" id="nextMonth">&gt;</button>
+</div>
+
+<div class="weekdays">
+	<div>Po</div>
+	<div>To</div>
+	<div>Sr</div>
+	<div>Če</div>
+	<div>Pe</div>
+</div>
+
+<div class="calendar" id="calendar"></div>
+
+<div class="offcanvas offcanvas-bottom text-bg-dark" tabindex="-1" id="dayOffcanvas" style="height: 80vh;">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title" id="dayTitle">03. 02. 2025 (PO)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="lessonList" class="d-flex flex-column gap-2">
+            <!-- сюда вставим пары -->
+        </div>
+    </div>
+</div>
+
+
+<!-- Модальное окно -->
+<!-- Модальное окно -->
+<div class="modal fade" id="datumModal" tabindex="-1" aria-labelledby="datumModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg"> <!-- крупнее окно -->
+		<div class="modal-content bg-dark text-white fs-5"> <!-- fs-5 — увеличенный шрифт -->
+			<div class="modal-header">
+				<h5 class="modal-title" id="datumModalLabel">Podrobnosti datuma</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Zapri"></button>
+			</div>
+			<div class="modal-body">
+			<table class="table table-dark table-striped table-borderless mb-0">
+				<tbody>
+				<tr>
+					<th scope="row" style="width: 30%;">Koda</th>
+					<td><span id="datumCode">1a24_matust1_14</span></td>
+				</tr>
+				<tr>
+					<th scope="row">Predmet</th>
+					<td><span id="datumSubject">MAT</span></td>
+				</tr>
+				<tr>
+					<th scope="row">Tip</th>
+					<td><span id="datumType">UST</span></td>
+				</tr>
+				<tr>
+					<th scope="row">Datum</th>
+					<td><span id="datumDate">21.11.2024</span></td>
+				</tr>
+				<tr>
+					<th scope="row">Opis</th>
+					<td><span id="datumLabel">Dodatne informacije o datumu...</span></td>
+				</tr>
+				</tbody>
+			</table>
+			</div>
+			<div class="modal-footer">
+				<a href=""  id="datumHistory" class="btn btn-light">Zgodovina</a>
+			<a href="" id="datumLink" class="btn btn-primary">Ocenjevanje</a>
+			<a href=""  id="datumSwap" class="btn btn-warning">Zamenjaj</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="module" src="/static/js/students/my_calendar/my_calendar.js">
+
+</script>
+
+{% comment %}
+	<script>
+		student_datums_data = [
+			{
+				"code": "1a24_matust1_14",
+				"date": "2024-11-21",
+				"subject_cap": "MAT",
+				"type_cap": "UST",
+				"label": "label"
+			},
+			{
+				"code": "1a24_zgoust1_09",
+				"date": "2024-11-21",
+				"subject_cap": "ZGO",
+				"type_cap": "UST",
+				"label": "label"
+			},
+			{
+				"code": "1a24_angust1_03",
+				"date": "2024-09-18",
+				"subject_cap": "ANG",
+				"type_cap": "UST",
+				"label": "label"
+			},
+			{
+				"code": "1a24_bioust1_07",
+				"date": "2024-12-17",
+				"subject_cap": "BIO",
+				"type_cap": "UST",
+				"label": "label"
+			},
+			{
+				"code": "1a24_glaust1_04",
+				"date": "2024-11-14",
+				"subject_cap": "GLA",
+				"type_cap": "UST",
+				"label": "Tema: Čajkovski"
+			},
+			{
+				"code": "1a24_glapis1_04",
+				"date": "2024-11-28",
+				"subject_cap": "GLA",
+				"type_cap": "PIS",
+				"label": "label"
+			},
+			{
+				"code": "1a24_matpis1_04",
+				"date": "2024-11-28",
+				"subject_cap": "MAT",
+				"type_cap": "PIS",
+				"label": "label"
+			},
+			{
+				"code": "1a24_fizpis1_04",
+				"date": "2024-11-04",
+				"subject_cap": "FIZ",
+				"type_cap": "PIS",
+				"label": "label"
+			}
+		];
+	
+		schedule_data = {
+			"class_code": "1a24",
+			"valid_from": "01.09.2024",
+			"comment": "My comment jopa pidor.",
+			"schedule": [
+				null,
+				[
+					null,
+					"zgo",
+					"ang",
+					"svz",
+					"slj",
+					"fiz",
+					"inf",
+					"inf"
+				],
+				[
+					null,
+					"slj",
+					"slj",
+					"bio",
+					"ita",
+					"geo",
+					"fiz"
+				],
+				[
+					null,
+					"fiz",
+					"svz",
+					"svz",
+					"mat",
+					"zgo",
+					"ang",
+					"kem"
+				],
+				[
+					null,
+					"bio",
+					"ita",
+					"slj",
+					"ang",
+					"mat",
+					"mat",
+					"gla"
+				],
+				[
+					null,
+					"inf",
+					"inf",
+					"ita",
+					"fiz",
+					"mat",
+					"geo",
+					"lum"
+				]
+			]
+		}
+	
+	
+		const dayOffcanvasEl = document.getElementById("dayOffcanvas");
+		const dayTitleEl = document.getElementById("dayTitle");
+		const lessonListEl = document.getElementById("lessonList");
+		const offcanvas = new bootstrap.Offcanvas(dayOffcanvasEl);
+	
+		function getWeekdayShortName(dayNum) {
+			// dayNum: 1-5 для Пн-Пт, вернём сокращение на словенском
+			const days = ['NE', 'PO', 'TO', 'SR', 'ČE', 'PE', 'SO', 'NE'];
+			// Если JS getDay() даёт 0-вс, 1-пн ... то передаем туда
+			return days[dayNum] || '';
+		}
+	
+		function formatDateWithWeekday(date) {
+			// Форматируем дату в "dd. mm. yyyy (ДЕНЬ)"
+			const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+			const dateStr = date.toLocaleDateString('sl-SI', options);
+			const weekday = getWeekdayShortName(date.getDay());
+			return `${dateStr} (${weekday})`;
+		}
+	
+		{% comment %}
+			function showScheduleInOffcanvas(date) {
+				const jsDay = date.getDay(); // 0-6, вс-пн
+		
+				// Преобразуем jsDay (0..6) в индекс расписания (1..5)
+				const dayOfWeek = (jsDay >= 1 && jsDay <= 5) ? jsDay : null;
+		
+				if (!dayOfWeek) {
+				dayTitleEl.textContent = formatDateWithWeekday(date);
+				lessonListEl.innerHTML = '<em>Ta dan ni šolski dan.</em>';
+				offcanvas.show();
+				return;
+				}
+		
+				const scheduleForDay = schedule_data.schedule[dayOfWeek];
+			
+				dayTitleEl.textContent = formatDateWithWeekday(date);
+			
+				if (!scheduleForDay) {
+					lessonListEl.innerHTML = '<em>Ni razporeda za ta dan.</em>';
+					offcanvas.show();
+					return;
+				}
+			
+				// Начинаем строить таблицу с увеличенным шрифтом (fs-5)
+				const table = document.createElement('table');
+				table.className = 'table table-dark table-striped mb-0 fs-5';
+			
+				// Заголовок
+				const thead = document.createElement('thead');
+				thead.innerHTML = `
+					<tr>
+						<th scope="col" style="width: 60px;">Ura:</th>
+						<th scope="col">Predmet:</th>
+					</tr>`;
+				table.appendChild(thead);
+			
+				const tbody = document.createElement('tbody');
+			
+				const dateISO = date.toISOString().slice(0,10);
+			
+				for (let lessonNum = 0; lessonNum <= 10; lessonNum++) {
+					const tr = document.createElement('tr');
+			
+					const tdNum = document.createElement('th');
+					tdNum.scope = 'row';
+					tdNum.textContent = lessonNum;
+					tr.appendChild(tdNum);
+			
+					const tdSubject = document.createElement('td');
+			
+					let subjectCode = null;
+					if (scheduleForDay.length > lessonNum) {
+						subjectCode = scheduleForDay[lessonNum];
+					}
+			
+					if (!subjectCode) {
+						// пустая ячейка, ничего не пишем
+						tdSubject.textContent = '';
+					} else {
+						const datums = student_datums_data.filter(d => d.date === dateISO && d.subject_cap.toLowerCase() === subjectCode.toLowerCase());
+			
+						if (datums.length > 0) {
+							datums.forEach(datum => {
+								const btn = document.createElement('button');
+								btn.type = 'button';
+								btn.className = 'btn btn-small text-start w-auto ' + (datum.type_cap === 'PIS' ? 'btn-danger' : 'btn-primary');
+								btn.textContent = `${datum.subject_cap}`;
+								btn.style.width = '100%';
+							
+								btn.addEventListener('click', () => {
+									showDatumDetails(datum.code);
+								});
+							
+								tdSubject.appendChild(btn);
+							});
+						} else {
+							tdSubject.textContent = subjectCode.toUpperCase();
+						}
+					}
+			
+					tr.appendChild(tdSubject);
+					tbody.appendChild(tr);
+				}
+			
+				table.appendChild(tbody);
+			
+				lessonListEl.innerHTML = '';
+				lessonListEl.appendChild(table);
+			
+				offcanvas.show();
+		
+				button.onclick = () => showDatumDetails(ev.code);
+			}
+		
+	
+		function showScheduleInOffcanvas(date) {
+			const dayOfWeek = date.getDay(); // 0 (неделя) - 6 (суббота)
+		
+			// Проверяем, что это рабочий день (Пн-Пт)
+			if (dayOfWeek < 1 || dayOfWeek > 5) {
+				dayTitleEl.textContent = formatDateWithWeekday(date);
+				lessonListEl.innerHTML = '<em>Ta dan ni šolski dan.</em>';
+				offcanvas.show();
+				return;
+			}
+		
+			const scheduleForDay = schedule_data.schedule[dayOfWeek];
+			dayTitleEl.textContent = formatDateWithWeekday(date);
+		
+			if (!scheduleForDay) {
+				lessonListEl.innerHTML = '<em>Ni razporeda za ta dan.</em>';
+				offcanvas.show();
+				return;
+			}
+		
+			const dateISO = formatDateLocalISO(date);
+		
+			const table = document.createElement('table');
+			table.className = 'table table-dark table-striped mb-0 fs-5';
+		
+			const thead = document.createElement('thead');
+			thead.innerHTML = `
+				<tr>
+					<th scope="col" style="width: 60px;">Ura:</th>
+					<th scope="col">Predmet:</th>
+				</tr>`;
+			table.appendChild(thead);
+		
+			const tbody = document.createElement('tbody');
+		
+			for (let lessonNum = 0; lessonNum < scheduleForDay.length; lessonNum++) {
+				const tr = document.createElement('tr');
+		
+				const tdNum = document.createElement('th');
+				tdNum.scope = 'row';
+				tdNum.textContent = lessonNum;
+				tr.appendChild(tdNum);
+		
+				const tdSubject = document.createElement('td');
+		
+				const subjectCode = scheduleForDay[lessonNum];
+		
+				if (!subjectCode) {
+					tdSubject.textContent = '';
+				} else {
+					const datums = student_datums_data.filter(d => d.date === dateISO && d.subject_cap.toLowerCase() === subjectCode.toLowerCase());
+		
+					if (datums.length > 0) {
+						datums.forEach(datum => {
+							const btn = document.createElement('button');
+							btn.type = 'button';
+							btn.className = 'btn btn-small text-start w-auto ' + (datum.type_cap === 'PIS' ? 'btn-danger' : 'btn-primary');
+							btn.textContent = `${datum.subject_cap}`;
+							btn.style.width = '100%';
+		
+							btn.addEventListener('click', () => {
+								showDatumDetails(datum.code);
+							});
+		
+							tdSubject.appendChild(btn);
+						});
+					} else {
+						tdSubject.textContent = subjectCode.toUpperCase();
+					}
+				}
+		
+				tr.appendChild(tdSubject);
+				tbody.appendChild(tr);
+			}
+		
+			table.appendChild(tbody);
+		
+			lessonListEl.innerHTML = '';
+			lessonListEl.appendChild(table);
+		
+			offcanvas.show();
+		}
+	
+		function attachDayClickHandlers() {
+			const dayEls = calendarEl.querySelectorAll(".day");
+			dayEls.forEach(dayEl => {
+				dayEl.addEventListener("click", () => {
+					const dayNumber = parseInt(dayEl.querySelector(".date-number").textContent, 10);
+					const isOtherMonth = dayEl.classList.contains("other-month");
+	
+					let year = currentDate.getFullYear();
+					let month = currentDate.getMonth();
+	
+					if (isOtherMonth) {
+						if (dayNumber > 20) {
+							month -= 1;
+							if (month < 0) {
+								month = 11;
+								year -= 1;
+							}
+						} else {
+							month += 1;
+							if (month > 11) {
+								month = 0;
+								year += 1;
+							}
+						}
+					}
+	
+					const clickedDate = new Date(year, month, dayNumber);
+	
+					showScheduleInOffcanvas(clickedDate);
+				});
+			});
+		}
+	
+		// Вызов attachDayClickHandlers в конце renderCalendar, как у тебя было
+	
+	
+	
+		const calendarEl = document.getElementById("calendar");
+		const monthYearEl = document.getElementById("monthYear");
+		const prevBtn = document.getElementById("prevMonth");
+		const nextBtn = document.getElementById("nextMonth");
+	
+		let currentDate = new Date();
+	
+	
+		function formatDateLocalISO(date) {
+			const year = date.getFullYear();
+			const month = (date.getMonth() + 1).toString().padStart(2, '0');
+			const day = date.getDate().toString().padStart(2, '0');
+			return `${year}-${month}-${day}`;
+		}
+		
+		function renderCalendar(date) {
+			calendarEl.innerHTML = "";
+			const year = date.getFullYear();
+			const month = date.getMonth();
+		
+			monthYearEl.textContent = date.toLocaleString("sl-SI", { month: "long", year: "numeric" });
+		
+			const firstDayOfMonth = new Date(year, month, 1);
+			let startDay = firstDayOfMonth.getDay();
+			if (startDay === 0) startDay = 7; // воскресенье
+		
+			let startDate = new Date(firstDayOfMonth);
+			startDate.setDate(firstDayOfMonth.getDate() - (startDay - 1)); // понедельник недели первого числа месяца
+		
+			for (let week = 0; week < 6; week++) {
+				for (let day = 0; day < 5; day++) {
+					const dayDate = new Date(startDate);
+					dayDate.setDate(startDate.getDate() + week * 7 + day);
+		
+					const dayEl = document.createElement("div");
+					dayEl.classList.add("day");
+					if (dayDate.getMonth() !== month) {
+						dayEl.classList.add("other-month");
+					}
+		
+					// события на этот день с локальным форматом даты
+					const dayEvents = student_datums_data.filter(ev => ev.date === formatDateLocalISO(dayDate));
+					dayEvents.forEach(ev => {
+						const badge = document.createElement("div");
+						badge.classList.add("event-badge");
+						if (ev.type_cap === "UST") badge.classList.add("event-UST");
+						if (ev.type_cap === "PIS") badge.classList.add("event-PIS");
+						badge.textContent = ev.subject_cap;
+						dayEl.appendChild(badge);
+					});
+		
+					const numberEl = document.createElement("div");
+					numberEl.classList.add("date-number");
+					numberEl.textContent = dayDate.getDate();
+		
+					dayEl.appendChild(numberEl);
+					calendarEl.appendChild(dayEl);
+				}
+			}
+		
+			attachDayClickHandlers();
+		}
+		
+	
+		function formatDateSlovenian(dateStr) {
+			const d = new Date(dateStr);
+			const day = d.getDate().toString().padStart(2, '0');
+			const month = (d.getMonth() + 1).toString().padStart(2, '0');
+			const year = d.getFullYear();
+			return `${day}.${month}.${year}`;
+		}
+		
+		function showDatumDetails(code) {
+			if (!Array.isArray(student_datums_data)) {
+				console.error('student_datums_data не загружен');
+				return;
+			}
+			const datum = student_datums_data.find(d => d.code === code);
+			if (!datum) {
+				console.error('Datum не найден для кода:', code);
+				return;
+			}
+		
+			// Заполняем модалку
+			document.getElementById('datumCode').textContent = datum.code;
+			document.getElementById('datumSubject').textContent = datum.subject_cap;
+			document.getElementById('datumType').textContent = datum.type_cap
+			document.getElementById('datumDate').textContent = formatDateSlovenian(datum.date);
+			document.getElementById('datumLabel').textContent = datum.label || '';
+			document.getElementById('datumLink').href = `/assessments/${datum.code.slice(0, -3)}`;
+			document.getElementById('datumSwap').href = `/swaps/new/${datum.code}`;
+			document.getElementById('datumSwap').href = `/logs/datum/${datum.code}`;
+		
+			new bootstrap.Modal(document.getElementById('datumModal')).show();
+		}
+	
+		prevBtn.addEventListener("click", () => {
+			currentDate.setMonth(currentDate.getMonth() - 1);
+			renderCalendar(currentDate);
+		});
+		
+		nextBtn.addEventListener("click", () => {
+			currentDate.setMonth(currentDate.getMonth() + 1);
+			renderCalendar(currentDate);
+		});
+	
+		renderCalendar(currentDate);
+	</script>
+{% endcomment %}
+
+{% endblock content %}

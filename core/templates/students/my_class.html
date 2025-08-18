@@ -1,0 +1,80 @@
+{% extends "core/main_template.html" %}
+
+{% block head %}
+
+<title>
+    Moj razred
+</title>
+
+{% endblock head %}
+
+{% block content %}
+
+<style>
+    /* Чередование цветов строк вручную, чтобы было и в hover */
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f8f9fa;
+    }
+    .table-striped tbody tr:nth-of-type(even) {
+        background-color: #ffffff;
+    }
+    .table-hover tbody tr:hover {
+        background-color: #e9ecef !important;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Moj razred</h1>
+        <button class="btn btn-outline-warning" id="editClassBtn" style="display:none;">
+            <span class="bi bi-pencil"></span>
+            Spremeni razred
+        </button>
+    </div>
+
+
+    <!-- Таблица с информацией о классе -->
+    <table class="table table-bordered table-striped table-hover align-middle" style="border-radius: 8px; overflow: hidden;">
+        <tbody>
+            <tr>
+                <th style="width: 200px;">Ime razreda</th>
+                <td id="class_name">1.A</td>
+            </tr>
+            <tr>
+                <th>Koda</th>
+                <td id="class_code">1a24</td>
+            </tr>
+            <tr>
+                <th>Predsednik</th>
+                <td id="president_name"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="mt-5 mb-3">Seznam učencev</h3>
+
+    <!-- Таблица со списком учеников -->
+    <table class="table table-bordered table-striped table-hover align-middle" style="border-radius: 8px; overflow: hidden;">
+        <thead class="table-dark">
+            <tr>
+                <th>Ime</th>
+                <th>Priimek</th>
+                <th>Uporabniško ime</th>
+            </tr>
+        </thead>
+        <tbody id="students_list">
+            <!-- Пример строки -->
+            
+        </tbody>
+    </table>
+
+    <div class="text-end">
+        
+    </div>
+    
+</div>
+
+<script src="/static/js/students/my_class/my_class.js" type="module"></script>
+
+{% endblock content %}

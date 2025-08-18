@@ -1,0 +1,414 @@
+{
+
+    "student_datums": [
+        {
+            "code": "1a24_matust2_14",
+            "date": "2024-11-21",
+            "subject_cap": "MAT",
+            "type_cap": "UST",
+            "assessment_name": "2. ustno iz mat",
+            "assessment_link": "/assessments/1a24_matust1",
+            "price": 130,
+            "rating": 7,
+            "stage_text": "Distributirano",
+            "label": "Label for 1a24_matust1_14"
+        },
+        {
+            "code": "1a24_zgoust1_09",
+            "date": "2024-11-21",
+            "subject_cap": "ZGO",
+            "type_cap": "UST",
+            "assessment_name": "ustno iz zgo",
+            "assessment_link": "/assessments/1a24_zgoust1",
+            "price": 70,
+            "rating": 3,
+            "stage_text": "Distributirano",
+            "label": "Label for 1a24_zgoust1_14"
+        },
+        {
+            "code": "1a24_angust1_03",
+            "date": "2024-09-18",
+            "subject_cap": "ANG",
+            "type_cap": "UST",
+            "assessment_name": "predstavitve ang",
+            "assessment_link": "/assessments/1a24_angust1",
+            "price": 230,
+            "rating": 11,
+            "stage_text": "Distributirano",
+            "label": "Label for 1a24_angust1_03"
+        },
+        {
+            "code": "1a24_bioust1_07",
+            "date": "2024-12-17",
+            "subject_cap": "BIO",
+            "type_cap": "UST",
+            "assessment_name": "ustno bio",
+            "assessment_link": "/assessments/1a24_bioust1",
+            "price": 170,
+            "rating": 9,
+            "stage_text": "Distributirano",
+            "label": "Label for 1a24_bioust1_07"
+        },
+        {
+            "code": "1a24_glaust1_04",
+            "date": "2024-11-14",
+            "subject_cap": "GLA",
+            "type_cap": "UST",
+            "assessment_name": "predstavitve gla",
+            "assessment_link": "/assessments/1a24_glaust1",
+            "price": 110,
+            "rating": 5,
+            "stage_text": "Distributirano",
+            "label": "Tema: Čajkovski"
+        },
+
+
+        {
+            "code": "1a24_glapis1_04",
+            "date": "2024-11-28",
+            "subject_cap": "GLA",
+            "type_cap": "PIS",
+            "assessment_name": "pisno gla",
+            "assessment_link": "/assessments/1a24_glapis1",
+            "price": null,
+            "rating": null,
+            "stage_text": "Distributirano",
+            "label": ""
+        },
+        {
+            "code": "1a24_matpis1_04",
+            "date": "2024-11-28",
+            "subject_cap": "MAT",
+            "type_cap": "PIS",
+            "assessment_name": "2. pisno mat",
+            "assessment_link": "/assessments/1a24_matpis1",
+            "price": null,
+            "rating": null,
+            "stage_text": "Distributirano",
+            "label": ""
+        },
+        {
+            "code": "1a24_fizpis1_04",
+            "date": "2024-11-04",
+            "subject_cap": "FIZ",
+            "type_cap": "PIS",
+            "assessment_name": "1. kreditne fiz",
+            "assessment_link": "/assessments/1a24_fizpis1",
+            "price": null,
+            "rating": null,
+            "stage_text": "Distributirano",
+            "label": ""
+        }
+    ],
+
+    "assessment_data": {
+        "code": "1a24_matust1",
+        "subject_cap": "MAT",
+        "type_cap": "UST",
+        "name": "Prvo ustno iz mat",
+        "stage": 0,
+        
+        "datums": [
+            {
+                "code": "1a24_matust1_01",
+                "date": "2024-11-28",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_01"
+            },
+            {
+                "code": "1a24_matust1_02",
+                "date": "2024-11-28",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_02"
+            },
+            {
+                "code": "1a24_matust1_03",
+                "date": "2024-11-28",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_03"
+            },
+            {
+                "code": "1a24_matust1_04",
+                "date": "2024-12-05",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_04"
+            },
+            {
+                "code": "1a24_matust1_05",
+                "date": "2024-12-05",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_05"
+            },
+            {
+                "code": "1a24_matust1_06",
+                "date": "2024-12-05",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_06"
+            },
+            {
+                "code": "1a24_matust1_07",
+                "date": "2024-12-12",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_07"
+            },
+            {
+                "code": "1a24_matust1_08",
+                "date": "2024-12-12",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_08"
+            },
+            {
+                "code": "1a24_matust1_09",
+                "date": "2024-12-12",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_09"
+            },
+            {
+                "code": "1a24_matust1_10",
+                "date": "2024-12-19",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_10"
+            },
+            {
+                "code": "1a24_matust1_11",
+                "date": "2024-12-19",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_11"
+            },
+            {
+                "code": "1a24_matust1_12",
+                "date": "2024-12-19",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_12"
+            },
+            {
+                "code": "1a24_matust1_13",
+                "date": "2024-12-26",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_13"
+            },
+            {
+                "code": "1a24_matust1_14",
+                "date": "2024-12-26",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_14"
+            },
+            {
+                "code": "1a24_matust1_15",
+                "date": "2024-12-26",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_15"
+            },
+            {
+                "code": "1a24_matust1_16",
+                "date": "2025-01-02",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_16"
+            },
+            {
+                "code": "1a24_matust1_17",
+                "date": "2025-01-02",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_17"
+            },
+            {
+                "code": "1a24_matust1_18",
+                "date": "2025-01-02",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_18"
+            },
+            {
+                "code": "1a24_matust1_19",
+                "date": "2025-01-09",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_19"
+            },
+            {
+                "code": "1a24_matust1_20",
+                "date": "2025-01-09",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_20"
+            },
+            {
+                "code": "1a24_matust1_21",
+                "date": "2025-01-09",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_21"
+            },
+            {
+                "code": "1a24_matust1_22",
+                "date": "2025-01-16",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_22"
+            },
+            {
+                "code": "1a24_matust1_23",
+                "date": "2025-01-16",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_23"
+            },
+            {
+                "code": "1a24_matust1_24",
+                "date": "2025-01-16",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_24"
+            },
+            {
+                "code": "1a24_matust1_25",
+                "date": "2025-01-23",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_25"
+            },
+            {
+                "code": "1a24_matust1_26",
+                "date": "2025-01-23",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_26"
+            },
+            {
+                "code": "1a24_matust1_27",
+                "date": "2025-01-23",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_27"
+            },
+            {
+                "code": "1a24_matust1_28",
+                "date": "2025-01-30",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_28"
+            },
+            {
+                "code": "1a24_matust1_29",
+                "date": "2025-01-30",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_29"
+            },
+            {
+                "code": "1a24_matust1_30",
+                "date": "2025-01-30",
+                "student": null,
+                "price": null,
+                "rating": null,
+                "stage": 0,
+                "stage_text": "Objavljen",
+                "label": "Label for 1a24_matust1_30"
+            }
+        ]
+    }
+}

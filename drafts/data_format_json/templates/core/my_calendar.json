@@ -1,0 +1,198 @@
+{
+    "student_datums": [
+        {
+            "code": "1a24_matust1_14",
+            "assessment_ref": "1a24_matust1",
+            "date": "2024-11-21",
+            "student": "jannov1",
+            "price": 130,
+            "rating": 7,
+            "stage": 3,
+            "label": "Label for 1a24_matust1_14"
+        },
+        {
+            "code": "1a24_zgoust1_09",
+            "assessment_ref": "1a24_zgoust1",
+            "date": "2024-10-23",
+            "student": "jannov1",
+            "price": 70,
+            "rating": 3,
+            "stage": 3,
+            "label": "Label for 1a24_zgoust1_09"
+        },
+        {
+            "code": "1a24_angust1_03",
+            "assessment_ref": "1a24_angust1",
+            "date": "2024-09-18",
+            "student": "jannov1",
+            "price": 120,
+            "rating": 6,
+            "stage": 3,
+            "label": "Label for 1a24_angust1_03"
+        },
+        {
+            "code": "1a24_itaust1_12",
+            "assessment_ref": "1a24_itaust1",
+            "date": "2024-11-07",
+            "student": "jannov1",
+            "price": 230,
+            "rating": 11,
+            "stage": 3,
+            "label": "Label for 1a24_itaust1_12"
+        },
+        {
+            "code": "1a24_bioust1_07",
+            "assessment_ref": "1a24_bioust1",
+            "date": "2024-12-17",
+            "student": "jannov1",
+            "price": 170,
+            "rating": 9,
+            "stage": 3,
+            "label": "Label for 1a24_itaust1_07"
+        },
+        {
+            "code": "1a24_glaust1_04",
+            "assessment_ref": "1a24_glaust1",
+            "date": "2024-11-14",
+            "student": "jannov1",
+            "price": 110,
+            "rating": 5,
+            "stage": 3,
+            "label": "Tema: Čajkovski"
+        },
+
+        {
+            "code": "1a24_glapis1_01",
+            "assessment_ref": "1a24_glapis1",
+            "date": "2024-11-28",
+            "student": "jannov1",
+            "price": null,
+            "rating": null,
+            "stage": 3,
+            "label": "Label for 1a24_glapis1_01"
+        },
+        {
+            "code": "1a24_matpis1_01",
+            "assessment_ref": "1a24_matpis1",
+            "date": "2024-11-28",
+            "student": "jannov1",
+            "price": null,
+            "rating": null,
+            "stage": 3,
+            "label": "Label for 1a24_matpis1_01"
+        },
+        {
+            "code": "1a24_fizpis1_01",
+            "assessment_ref": "1a24_fizpis1",
+            "date": "2024-11-04",
+            "student": "jannov1",
+            "price": null,
+            "rating": null,
+            "stage": 3,
+            "label": "Label for 1a24_fizpis1_01"
+        }
+    ]
+}
+
+{
+    "student_datums": [
+        {
+            "code": "1a24_matust1_14",
+            "date": "2024-11-21",
+            "subject_cap": "MAT",
+	        "type_cap": "UST",
+            "assessment_name": "1. ustno iz mat",
+            "assessment_link": "/assessments/1a24_matust1",
+            "price": 130,
+            "rating": 7,
+            "stage_text": "Distributirano",
+            "label": "Label for 1a24_matust1_14"
+        },
+        {
+            "code": "1a24_zgoust1_09",
+            "date": "2024-11-21",
+            "subject_cap": "ZGO",
+	        "type_cap": "UST",
+            "assessment_name": "ustno iz zgo",
+            "assessment_link": "/assessments/1a24_zgoust1",
+            "price": 70,
+            "rating": 3,
+            "stage_text": "Distributirano",
+            "label": "Label for 1a24_zgoust1_14"
+        },
+        {
+            "code": "1a24_angust1_03",
+            "date": "2024-09-18",
+            "subject_cap": "ANG",
+	        "type_cap": "UST",
+            "assessment_name": "predstavitve ang",
+            "assessment_link": "/assessments/1a24_angust1",
+            "price": 230,
+            "rating": 11,
+            "stage_text": "Distributirano",
+            "label": "Label for 1a24_angust1_03"
+        },
+        {
+            "code": "1a24_bioust1_07",
+            "date": "2024-12-17",
+            "subject_cap": "BIO",
+	        "type_cap": "UST",
+            "assessment_name": "ustno bio",
+            "assessment_link": "/assessments/1a24_bioust1",
+            "price": 170,
+            "rating": 9,
+            "stage_text": "Distributirano",
+            "label": "Label for 1a24_bioust1_07"
+        },
+        {
+            "code": "1a24_glaust1_04",
+            "date": "2024-11-14",
+            "subject_cap": "GLA",
+	        "type_cap": "UST",
+            "assessment_name": "predstavitve gla",
+            "assessment_link": "/assessments/1a24_glaust1",
+            "price": 110,
+            "rating": 5,
+            "stage_text": "Distributirano",
+            "label": "Tema: Čajkovski"
+        },
+
+
+        {
+            "code": "1a24_glapis1_04",
+            "date": "2024-11-28",
+            "subject_cap": "GLA",
+	        "type_cap": "PIS",
+            "assessment_name": "pisno gla",
+            "assessment_link": "/assessments/1a24_glapis1",
+            "price": null,
+            "rating": null,
+            "stage_text": "Distributirano",
+            "label": ""
+        },
+        {
+            "code": "1a24_matpis1_04",
+            "date": "2024-11-28",
+            "subject_cap": "MAT",
+	        "type_cap": "PIS",
+            "assessment_name": "2. pisno mat",
+            "assessment_link": "/assessments/1a24_matpis1",
+            "price": null,
+            "rating": null,
+            "stage_text": "Distributirano",
+            "label": ""
+        },
+        {
+            "code": "1a24_fizpis1_04",
+            "date": "2024-11-04",
+            "subject_cap": "FIZ",
+	        "type_cap": "PIS",
+            "assessment_name": "1. kreditne fiz",
+            "assessment_link": "/assessments/1a24_fizpis1",
+            "price": null,
+            "rating": null,
+            "stage_text": "Distributirano",
+            "label": ""
+        },
+    ]
+}

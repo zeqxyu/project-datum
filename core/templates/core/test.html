@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Моя страница
+
+    <div id="jsonOutput">
+        
+    </div>
+
+    <script>
+        fetch('/api/schedule/')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('jsonOutput').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(err => {
+                document.getElementById('jsonOutput').textContent = 'Ошибка загрузки: ' + err;
+            });
+    </script>
+    </script>
+</body>
+</html>

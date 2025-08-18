@@ -1,0 +1,130 @@
+{% extends "core/main_template.html" %}
+
+{% block head %}
+    <title>
+        Moj račun
+    </title>
+{% endblock head %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/css/students/my_calendar/my_calendar.css">
+
+<div class="container my-5">
+
+    <h1 class="mb-4 text-center">Moj račun</h1>
+  
+    <!-- Osebni podatki -->
+    <section class="mb-5">
+      <h3>Osebni podatki</h3>
+      <table id="personalDataTable" class="table table-striped table-bordered rounded-3 w-100">
+        <tbody>
+          <tr>
+            <th class="w-40">Ime</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Priimek</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Uporabniško ime</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>E-pošta</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <!-- Valuta -->
+    <section class="mb-5">
+      <h3>Valuta</h3>
+      <table id="valutaTable" class="table table-striped table-bordered rounded-3 w-100">
+        <tbody>
+          <tr>
+            <th class="w-50">Količina valute</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Koeficient pravičnosti</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <!-- Moj razred -->
+    <section class="mb-5">
+      <h3>Moj razred</h3>
+      <table id="razredTable" class="table table-striped table-bordered rounded-3 w-100">
+        <tbody>
+          <tr>
+            <th class="w-50">Ime razreda</th>
+            <td><a href="#"></a></td>
+          </tr>
+          <tr>
+            <th>Imam status</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Sem predsednik</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <!-- Spremeni podatke -->
+    <section>
+        <h3>Spremeni podatke</h3>
+
+        <form id="accountForm" class="w-100" style="max-width: 600px;">
+            <div class="mb-3">
+            <label for="inputName" class="form-label">Ime</label>
+            <input type="text" class="form-control" id="inputName" value="Janez" />
+            </div>
+            <div class="mb-3">
+            <label for="inputLastName" class="form-label">Priimek</label>
+            <input type="text" class="form-control" id="inputLastName" value="Novak" />
+            </div>
+            <div class="mb-3">
+            <label for="inputUsername" class="form-label">Uporabniško ime</label>
+            <input type="text" class="form-control" id="inputUsername" value="jannov1" disabled />
+            </div>
+            <div class="mb-3">
+            <label for="inputEmail" class="form-label">E-pošta</label>
+            <input type="email" class="form-control" id="inputEmail" value="janez.novak@gmail.com" />
+            </div>
+            <div class="mb-3">
+            <label for="inputSnapchat" class="form-label">Snapchat</label>
+            <input type="text" class="form-control" id="inputSnapchat" placeholder="Vnesite Snapchat uporabniško ime" />
+            </div>
+            <div class="mb-3">
+            <label for="inputTelefon" class="form-label">Telefon</label>
+            <input type="tel" class="form-control" id="inputTelefon" placeholder="Vnesite telefonsko številko" />
+            </div>
+
+            <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success btn-md">Save</button>
+            </div>
+        </form>
+      
+    </section>
+  
+    <hr />
+  
+    <div class="mt-3" style="max-width: 600px;">
+      <a href="/change-password" class="btn btn-outline-secondary w-100">Spremeni geslo</a>
+    </div>
+  
+  </div>
+
+
+<script type="module" src="/static/js/students/my_account/my_account.js"></script>
+<script type="module" src="/static/js/students/my_account/form_processor.js"></script>
+
+
+{% endblock content %}
