@@ -1,4 +1,5 @@
 import { student_datums_data } from '/static/js/assessments/calendar/temp_data.js';
+import { savedRatings, toggleRating } from '/static/js/assessments/calendar/ratings.js';
 import { menu_data } from '/static/js/core/main_template/temp_data.js'
 
 export function formatDateSlovenian(dateStr) {
@@ -148,18 +149,32 @@ export function showAssessmentDatumDetails(assessmentDatums, assessment_data, da
 
 		const ratingButtonsContent = document.createElement("div");
 		ratingButtonsContent.innerHTML = `
-			<button id="assessmentDatumRatePlus" class="btn btn-danger" target="_blank">
+			<button id="assessmentDatumRateMinus" class="btn btn-danger" target="_blank">
 				<span class="bi bi-dash-circle"></span>
 			</button>
-			<button id="assessmentDatumRateMinus" class="btn btn-outline-secondary" target="_blank">
+			<button id="assessmentDatumRateCancel" class="btn btn-outline-secondary" target="_blank">
 				cancel
 			</button>
-			<button id="assessmentDatumRateCancel" class="btn btn-success" target="_blank">
+			<button id="assessmentDatumRatePlus" class="btn btn-success" target="_blank">
 				<span class="bi bi-plus-circle"></span>
 			</button>
 		`;
 		ratingButtons.appendChild(ratingButtonsContent);
 	}
+
+	// Навешиваем обработчики
+	document.getElementById("assessmentDatumRatePlus").addEventListener("click", () => {
+		toggleRating(date, 1);
+	});
+
+	document.getElementById("assessmentDatumRateMinus").addEventListener("click", () => {
+		toggleRating(date, -1);
+	});
+
+	document.getElementById("assessmentDatumRateCancel").addEventListener("click", () => {
+		toggleRating(date, 0);
+	});
+
 
 	// Инициализация поповеров
 	const popoverTriggerList = [].slice.call(modalEl.querySelectorAll('[data-bs-toggle="popover"]'));
