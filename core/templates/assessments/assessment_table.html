@@ -1,0 +1,44 @@
+{% extends "core/main_template.html" %}
+
+{% block head %}{% endblock head %}
+
+{% block content %}
+
+<style>
+    .progress-bar-custom {
+        display: flex;
+        align-items: center;
+        width: 140px; /* поменьше ширина */
+    }
+    
+    .progress-bar-custom .bi {
+        font-size: 1rem; /* меньше размер иконок */
+        margin: 0 4px;   /* меньше отступы между иконками и линиями */
+    }
+    
+    .progress-bar-custom .line {
+        height: 2px;
+        width: 20px; /* короче линии */
+        background-color: var(--bs-white);
+    }
+
+    .progress-bar-custom .line.line-warning {
+        background-color: var(--bs-warning)
+    }
+    .progress-bar-custom .line.line-white {
+        background-color: var(--bs-white)
+    }
+    .progress-bar-custom .line.line-success {
+        background-color: var(--bs-success)
+    }
+</style>
+
+<div id="assessments-container"></div>
+
+<div class="container mt-4">
+	<div class="table-responsive" id="assessment-table"></div>
+</div>
+
+<script type="module" src="/static/js/assessments/calendar/assessmentTable.js"></script>
+
+{% endblock content %}

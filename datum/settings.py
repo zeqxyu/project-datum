@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,8 +129,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'core/static']
+# Папка куда collectstatic будет складывать все статики
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Пути для поиска статики в приложениях
+STATIC_URL = "/static/"
+
+# Если у тебя есть папка со своей статикой
+STATICFILES_DIRS = [
+	BASE_DIR / "core/static",
+]
+# WhiteNoise сжимает и кеширует статику
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

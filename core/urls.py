@@ -1,6 +1,10 @@
 from django.urls import path
 from . import views
 
+from django.conf.urls import handler404
+
+handler404 = "core.views.error_404"
+
 urlpatterns = [
     # path('', views.test, name='test'),
     # path("api/schedule/", views.schedule_api, name="schedule_api"),
@@ -12,5 +16,6 @@ urlpatterns = [
     # ASSESSMENTS
     path('', views.my_calendar, name='my_calendar'),
     path('assessments/1a24', views.assessment_view, name='assessment'),
+    path('assessments/1a24_matust1/table', views.assessment_table, name='assessment_table'),
     path('assessments', views.assessments, name='assessments'),
 ]

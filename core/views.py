@@ -17,6 +17,10 @@ from schedules.utils.schedule_to_dict import schedule_to_dict  # наприме�
 #     )
 #     return JsonResponse(data, safe=False)  # safe=False, если data — список
 
+
+def error_404(request, exception):
+    return render(request, "404.html", status=404)
+
 # STUDENTS
 
 
@@ -34,6 +38,9 @@ def my_calendar(request):
 
 def assessment_view(request):
     return render(request, 'assessments/calendar.html')
+
+def assessment_table(request):
+    return render(request, 'assessments/assessment_table.html')
 
 def assessments(request):
     return render(request, 'assessments/assessments.html')
