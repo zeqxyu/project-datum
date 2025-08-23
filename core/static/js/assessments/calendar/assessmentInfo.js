@@ -1,5 +1,7 @@
 import {menu_data} from '/static/js/core/main_template/temp_data.js';
 import {assessment_data, student_datums_data} from '/static/js/assessments/calendar/temp_data.js';
+import {getAviableRatings} from '/static/js/assessments/calendar/ratings.js';
+import { hasRated } from './ratings.js';
 
 // ======= Прогресс бар логика =======
 function getStageClasses(stage) {
@@ -86,6 +88,8 @@ export function renderAssessmentCard(assessment_data) {
 
 	document.getElementById("assessments-container").appendChild(card);
 
+
+	// если студент президент -> кнопка Edit
     if (menu_data.student_data.is_president === true) {
         const btnWrapper = card.querySelector("#assessmentBtnWrapper");
         const editLink = document.createElement("a");
@@ -97,7 +101,8 @@ export function renderAssessmentCard(assessment_data) {
     
     console.log(assessment_data.stage);
     if (assessment_data.stage === 1) {
-        const aviableRatingsWrapper = card.querySelector('#aviableRatings');
+        // показывает бейджики с доступными + и -
+		const aviableRatingsWrapper = card.querySelector('#aviableRatings');
 
         const aviableRatingsContent = document.createElement("span");
         aviableRatingsContent.innerHTML = `
@@ -110,6 +115,21 @@ export function renderAssessmentCard(assessment_data) {
         `;
 
         aviableRatingsWrapper.appendChild(aviableRatingsContent);
+
+		document.getElementById("aviablePluses").textContent = getAviableRatings().aviablePluses + "";
+		document.getElementById("aviableMinuses").textContent = getAviableRatings().aviableMinuses + "";
+
+		// кнопка отправки формы savedRatings
+		if (!hasRated) {
+			const btnWrapper = card.querySelector("#assessmentBtnWrapper");
+			const saveBtn = document.createElement("button");
+			saveBtn.addEventListener("click", () => {
+				// TODO: действие кнопки
+			});
+			saveBtn.className = "btn btn-success btn-sm ms-2";
+			saveBtn.innerHTML = `<i class="bi bi-check-circle"></i> Pošlji`;
+			btnWrapper.appendChild(saveBtn);
+		}
     }
 }
 

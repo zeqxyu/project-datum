@@ -1,6 +1,25 @@
 import { student_datums_data } from '/static/js/assessments/calendar/temp_data.js';
-import { savedRatings, toggleRating } from '/static/js/assessments/calendar/ratings.js';
+import { renderCalendar, attachDayClickHandlers } from '/static/js/assessments/calendar/renderCalendar.js';
+import { showScheduleInOffcanvas } from '/static/js/assessments/calendar/showScheduleInOffcanvas.js';
+import { savedRatings, toggleRating, getAviableRatings } from '/static/js/assessments/calendar/ratings.js';
 import { menu_data } from '/static/js/core/main_template/temp_data.js'
+import { hasRated } from './ratings.js';
+
+function closeModal(modalID, offcanvasID, currentDate) { // закрывает окно и шторку, рендерит календарь
+	// Закрыть модалку
+	const modalEl = document.getElementById(modalID);
+	const modal = bootstrap.Modal.getInstance(modalEl);
+	modal.hide();
+
+	// Закрыть offcanvas
+	const offcanvasEl = document.getElementById(offcanvasID); // замените на реальный id
+	const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+	if (offcanvas) offcanvas.hide();
+
+	// Перерендерить календарь на том же месяце
+	renderCalendar(currentDate, menu_data); // currentDate = объект Date текущего месяца
+	attachDayClickHandlers(currentDate, showScheduleInOffcanvas);
+}
 
 export function formatDateSlovenian(dateStr) {
 	const d = new Date(dateStr);
@@ -10,6 +29,7 @@ export function formatDateSlovenian(dateStr) {
 	return `${day}.${month}.${year}`;
 }
 
+// мои датумы
 export function showMyDatumDetails(code) {
 	if (!Array.isArray(student_datums_data)) {
 		console.error('student_datums_data не загружен');
@@ -32,7 +52,10 @@ export function showMyDatumDetails(code) {
 	new bootstrap.Modal(document.getElementById('datumModal')).show();
 }
 
+// датумы из оценивания
+
 export function showAssessmentDatumDetails(assessmentDatums, assessment_data, date) {
+	// имена поудобнее
 	const type = assessment_data.type_cap;
 	const subject = assessment_data.subject_cap;
 
@@ -52,12 +75,14 @@ export function showAssessmentDatumDetails(assessmentDatums, assessment_data, da
 	const container = document.getElementById('assessmentDatumList');
 	container.innerHTML = ''; // очистка предыдущих
 
+	// генерация мини таблиц
 	assessmentDatums.forEach((datum, index) => {
 		const table = document.createElement('table');
 		table.className = 'table table-dark table-striped table-bordered mb-3';
 
 		const tbody = document.createElement('tbody');
 
+		// функция
 		const addRow = (labelText, valueText, popoverUsername) => {
 			const tr = document.createElement('tr');
 			const th = document.createElement('th');
@@ -89,7 +114,7 @@ export function showAssessmentDatumDetails(assessmentDatums, assessment_data, da
 		table.appendChild(tbody);
 		container.appendChild(table);
 
-		// добавить кнопки по условиям
+		// ДОБАВЛЕНИЕ КНОПОК К ДАТУМАМ (выбрать, купить, своп)
 		const btnWrapper = document.createElement('div');
 		btnWrapper.className = 'd-flex justify-content-end gap-2 mb-4';
 
@@ -131,21 +156,30 @@ export function showAssessmentDatumDetails(assessmentDatums, assessment_data, da
 		container.appendChild(btnWrapper);
 
 
-		// Подсветка по статусу
+		// Подсветка мини таблиц по статусу
 		if (datum.student == null) {
-			table.style.boxShadow = '0 0 10px rgba(0, 255, 0, 0.6)'; // свободный — зеленый
+			// свободный — зеленый
+			table.style.boxShadow = '0 0 10px rgba(0, 255, 0, 0.6)'; 
 		} else if (datum.student == menu_data.student_data.username) {
-			table.style.boxShadow = '0 0 10px rgba(255, 255, 0, 0.7)'; // твой — желтый
+			// твой — желтый
+			table.style.boxShadow = '0 0 10px rgba(255, 255, 0, 0.7)'; 
 		} else {
-			table.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.6)'; // занят — красный
+			// занят — красный
+			table.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.6)'; 
 		}
 	});
 
-	if (!hasAnyDatum && assessment_data.stage === 1 && assessmentDatums.some(d => d.student == null)) {
+	// КНОПКИ ДЛЯ РЕЙТИНГА
 
-		const ratingButtons = document.getElementById("ratingButtons");
-		ratingButtons.innerHTML = ''; // очищаем предыдущие кнопки
-
+	const ratingButtons = document.getElementById("ratingButtons");
+	ratingButtons.innerHTML = ''; // очищаем предыдущие кнопки
+	// кнопки + -
+	if (
+		!hasAnyDatum && 
+		assessment_data.stage === 1 && 
+		assessmentDatums.some(d => d.student == null) &&
+		!hasRated
+	) {
 
 		const ratingButtonsContent = document.createElement("div");
 		ratingButtonsContent.innerHTML = `
@@ -160,20 +194,36 @@ export function showAssessmentDatumDetails(assessmentDatums, assessment_data, da
 			</button>
 		`;
 		ratingButtons.appendChild(ratingButtonsContent);
+
+		const currentDate = new Date(date);
+
+		// Навешиваем обработчики
+		document.getElementById("assessmentDatumRatePlus").addEventListener("click", () => {
+			toggleRating(date, 1);
+			document.getElementById("aviablePluses").textContent = getAviableRatings().aviablePluses;
+			document.getElementById("aviableMinuses").textContent = getAviableRatings().aviableMinuses;
+			
+			closeModal("assessmentDatumModal", "dayOffcanvas", currentDate)
+		});
+
+		document.getElementById("assessmentDatumRateMinus").addEventListener("click", () => {
+			toggleRating(date, -1);
+			document.getElementById("aviablePluses").textContent = getAviableRatings().aviablePluses;
+			document.getElementById("aviableMinuses").textContent = getAviableRatings().aviableMinuses;
+			
+			closeModal("assessmentDatumModal", "dayOffcanvas", currentDate)
+		});
+
+		document.getElementById("assessmentDatumRateCancel").addEventListener("click", () => {
+			toggleRating(date, 0);
+			document.getElementById("aviablePluses").textContent = getAviableRatings().aviablePluses;
+			document.getElementById("aviableMinuses").textContent = getAviableRatings().aviableMinuses;
+			
+			closeModal("assessmentDatumModal", "dayOffcanvas", currentDate)
+		});
 	}
 
-	// Навешиваем обработчики
-	document.getElementById("assessmentDatumRatePlus").addEventListener("click", () => {
-		toggleRating(date, 1);
-	});
-
-	document.getElementById("assessmentDatumRateMinus").addEventListener("click", () => {
-		toggleRating(date, -1);
-	});
-
-	document.getElementById("assessmentDatumRateCancel").addEventListener("click", () => {
-		toggleRating(date, 0);
-	});
+	
 
 
 	// Инициализация поповеров

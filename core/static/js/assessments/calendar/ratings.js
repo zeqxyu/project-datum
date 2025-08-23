@@ -1,21 +1,65 @@
 import { menu_data } from '/static/js/core/main_template/temp_data.js'
+import { assessment_data } from './temp_data.js';
 
-export let savedRatings = {
-	"student": menu_data.student_data.username,
-	"assessment": "1a24_matust1",
-	"date_ratings": []
-};
+export const hasRated = false // позже будет браться из BD
+// const hasAnyDatum = assessment_data.datums.some(d => d.student === menu_data.student_data.username);
+const hasAnyDatum = false;
 
-export function getAvailableRatings() {
+// переменная с рейтингами
+export let savedRatings = {};
+
+if (!hasRated && !hasAnyDatum) {
+	savedRatings = {
+		"student": menu_data.student_data.username,
+		"assessment": assessment_data.code,
+		"date_ratings": []
+	};
+} else {
+	// TODO: если уже зарейтил - берем из БД
+	savedRatings = {
+		"student": menu_data.student_data.username,
+		"assessment": assessment_data.code,
+		"date_ratings": [
+			{
+				"date": "2024-11-28",
+				"value": 1,
+			},
+			{
+				"date": "2024-12-12",
+				"value": -1,
+			},
+			{
+				"date": "2025-01-02",
+				"value": -1,
+			},
+			{
+				"date": "2024-12-19",
+				"value": 1,
+			},
+			{
+				"date": "2024-12-26",
+				"value": 1,
+			},
+			{
+				"date": "2025-01-16",
+				"value": -1,
+			}
+		]
+	}
+}
+
+// вспомогательная функция
+export function getAviableRatings() {
 	let pluses = savedRatings.date_ratings.filter(r => r.value === 1).length;
 	let minuses = savedRatings.date_ratings.filter(r => r.value === -1).length;
 
 	return {
-		availablePluses: 3 - pluses,
-		availableMinuses: 3 - minuses
+		aviablePluses: 3 - pluses,
+		aviableMinuses: 3 - minuses
 	};
 }
 
+// добавляет/удаляет рейтинги в savedRatings
 export function toggleRating(date, value) {
 	// value: 1 (плюс), -1 (минус), 0 (отмена)
 
@@ -48,7 +92,8 @@ export function toggleRating(date, value) {
 	}
 
 	console.log("Текущее состояние:", savedRatings);
-	console.log("Pluses left:", getAvailableRatings().availablePluses);
-	console.log("Minuses left:", getAvailableRatings().availableMinuses);
+	console.log("Pluses left:", getAviableRatings().aviablePluses);
+	console.log("Minuses left:", getAviableRatings().aviableMinuses);
 }
+
 

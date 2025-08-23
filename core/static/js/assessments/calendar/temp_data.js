@@ -1,7 +1,7 @@
 export const student_datums_data = [
 	{
 		"code": "1a24_matust1_01",
-		"date": "2024-11-28",
+		"date": "2024-12-05",
 		"subject_cap": "MAT",
 		"type_cap": "UST",
 		"label": "label"
@@ -740,8 +740,6 @@ const assessment_data1 = {
 		}
 	]
 }
-
-
 const assessment_data2 = {
 	"assessment_view": true,
 	"code": "1a24_matust1",
@@ -1084,8 +1082,6 @@ const assessment_data2 = {
 		}
 	]
 }
-
-
 const assessment_data3 = {
 	"assessment_view": true,
 	"code": "1a24_matust1",
@@ -1429,7 +1425,340 @@ const assessment_data3 = {
 	]
 }
 
-export const assessment_data = assessment_data1;
+const assessment_dataPis = {
+	"assessment_view": true,
+	"code": "1a24_matpis2",
+	"subject_cap": "MAT",
+	"type_cap": "PIS",
+	"name": "Drugi test iz mat",
+	"stage": 3,
+	"label": "Množice števil.",
+	
+	"datums": [
+		{
+			"code": "1a24_matpis2_01",
+			"date": "2024-11-28",
+			"student": "jannov1",
+			"student_fullname": "Janez Novak",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_01"
+		},
+		{
+			"code": "1a24_matpis2_02",
+			"date": "2024-11-28",
+			"student": "marstr1",
+			"student_fullname": "Marko Strnad",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_02"
+		},
+		{
+			"code": "1a24_matpis2_03",
+			"date": "2024-11-28",
+			"student": "lutik1",
+			"student_fullname": "Lucija Tič",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_03"
+		},
+		{
+			"code": "1a24_matpis2_04",
+			"date": "2024-11-28",
+			"student": "petrov1",
+			"student_fullname": "Peter Novak",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_04"
+		},
+		{
+			"code": "1a24_matpis2_05",
+			"date": "2024-11-28",
+			"student": "katnov1",
+			"student_fullname": "Katarina Novak",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_05"
+		},
+		{
+			"code": "1a24_matpis2_06",
+			"date": "2024-11-28",
+			"student": "tompov1",
+			"student_fullname": "Tomaž Pogačar",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_06"
+		},
+		{
+			"code": "1a24_matpis2_07",
+			"date": "2024-11-28",
+			"student": "annrov1",
+			"student_fullname": "Ana Kovač",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_07"
+		},
+		{
+			"code": "1a24_matpis2_08",
+			"date": "2024-11-28",
+			"student": "michor1",
+			"student_fullname": "Miha Horvat",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_08"
+		},
+		{
+			"code": "1a24_matpis2_09",
+			"date": "2024-11-28",
+			"student": "juliam1",
+			"student_fullname": "Julija Marolt",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_09"
+		},
+		{
+			"code": "1a24_matpis2_10",
+			"date": "2024-11-28",
+			"student": "marktom1",
+			"student_fullname": "Mark Tomc",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_10"
+		},
+		{
+			"code": "1a24_matpis2_11",
+			"date": "2024-11-28",
+			"student": "katjam1",
+			"student_fullname": "Katja Majcen",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_11"
+		},
+		{
+			"code": "1a24_matpis2_12",
+			"date": "2024-11-28",
+			"student": "timonov1",
+			"student_fullname": "Timo Novak",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_12"
+		},
+		{
+			"code": "1a24_matpis2_13",
+			"date": "2024-11-28",
+			"student": "anamar1",
+			"student_fullname": "Ana Marolt",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_13"
+		},
+		{
+			"code": "1a24_matpis2_14",
+			"date": "2024-11-28",
+			"student": "mihaor1",
+			"student_fullname": "Miha Orož",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_14"
+		},
+		{
+			"code": "1a24_matpis2_15",
+			"date": "2024-11-28",
+			"student": "katnov2",
+			"student_fullname": "Katarina Novak",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_15"
+		},
+		{
+			"code": "1a24_matpis2_16",
+			"date": "2024-11-28",
+			"student": "petrov2",
+			"student_fullname": "Peter Rovan",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_16"
+		},
+		{
+			"code": "1a24_matpis2_17",
+			"date": "2024-11-28",
+			"student": "jannov2",
+			"student_fullname": "Janez Novak",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_17"
+		},
+		{
+			"code": "1a24_matpis2_18",
+			"date": "2024-11-28",
+			"student": "marstr2",
+			"student_fullname": "Marko Strnad",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_18"
+		},
+		{
+			"code": "1a24_matpis2_19",
+			"date": "2024-11-28",
+			"student": "lutik2",
+			"student_fullname": "Lucija Tič",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_19"
+		},
+		{
+			"code": "1a24_matpis2_20",
+			"date": "2024-11-28",
+			"student": "petrov3",
+			"student_fullname": "Peter Novak",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_20"
+		},
+		{
+			"code": "1a24_matpis2_21",
+			"date": "2024-11-28",
+			"student": "katjam2",
+			"student_fullname": "Katja Majcen",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_21"
+		},
+		{
+			"code": "1a24_matpis2_22",
+			"date": "2024-11-28",
+			"student": "annrov2",
+			"student_fullname": "Ana Kovač",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_22"
+		},
+		{
+			"code": "1a24_matpis2_23",
+			"date": "2024-11-28",
+			"student": "michor2",
+			"student_fullname": "Miha Horvat",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_23"
+		},
+		{
+			"code": "1a24_matpis2_24",
+			"date": "2024-11-28",
+			"student": "juliam2",
+			"student_fullname": "Julija Marolt",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_24"
+		},
+		{
+			"code": "1a24_matpis2_25",
+			"date": "2024-11-28",
+			"student": "marktom2",
+			"student_fullname": "Mark Tomc",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_25"
+		},
+		{
+			"code": "1a24_matpis2_26",
+			"date": "2024-11-28",
+			"student": "timonov2",
+			"student_fullname": "Timo Novak",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_26"
+		},
+		{
+			"code": "1a24_matpis2_27",
+			"date": "2024-11-28",
+			"student": "anamar2",
+			"student_fullname": "Ana Marolt",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_27"
+		},
+		{
+			"code": "1a24_matpis2_28",
+			"date": "2024-11-28",
+			"student": "mihaor2",
+			"student_fullname": "Miha Orož",
+			"price": null,
+			"rating": null,
+			"stage": 3,
+			"stage_text": "Določen",
+			"label": "Label for 1a24_matpis2_28"
+		}
+	]
+	
+}
+
+const assessment_dataEmpty = {
+	"assessment_view": false,
+	"code": "",
+	"subject_cap": "",
+	"type_cap": "",
+	"name": "",
+	"stage": null,
+	"label": "",
+	
+}
+
+export const assessment_data = assessment_dataEmpty;
 
 export const schedule_data = {
 	"class_code": "1a24",
